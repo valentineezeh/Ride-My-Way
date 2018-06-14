@@ -1,0 +1,68 @@
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 17%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+
+.badge {
+    background: rgb(71, 71, 71);
+    position: relative;
+    padding: 3px;
+    top: -10px;
+    left: -2px;
+    transform: (-100%, -100%);
+  }
+
+.userComment {
+    width: 100%;
+  }
+  
+  .userCommentAvatar  {
+    width: 12%;
+    height: 100%;
+    float: left;
+    padding: 20px 10px;
+    /* box-sizing: border-box;
+    border-top: 1px solid rgb(187, 187, 187);
+    border-right: none;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    border-left: 1px solid rgb(187, 187, 187); */
+  }
+  
+  .userCommentAvatar img {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* .userCommentAvatar  {
+    width: 80%;
+    float: left;
+  } */
+  
+  .userCommentSection {
+    width: 88%;
+    float: left;
+    padding: 20px 5px 20px 15px;
+  }
+  
+  .userCommentSection span  {
+    color: rgb(181, 181, 181);
+    font-size: 15px;
+  }
+  
+  .userCommentSection h4  {
+    font-size: 20px;
+    color: rgb(213, 63, 63);
+  }
