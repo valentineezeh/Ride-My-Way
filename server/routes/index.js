@@ -1,5 +1,5 @@
 import express from 'express';
-import AllRides  from '../dummy_data/controllers/getAllRides'
+import { AllRides, GetSingleRide }  from '../dummy_data/controllers/index'
 const router = express.Router();
 
 // defines routes
@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 
 // routes for ride-my-way
 router.get('/rides', AllRides.getAllRides);
+router.get('/rides/:rideId', GetSingleRide.singleRide);
 
 // catch all invalid routes
 router.get('*', (req, res) => res.status(404).json({
