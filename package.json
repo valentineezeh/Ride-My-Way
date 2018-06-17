@@ -4,7 +4,8 @@
   "description": "This a carpooling app where user offer rides to other users and other users can request to join ride",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/app.js --exec babel-node"
+    "start": "nodemon ./server/app.js --exec babel-node",
+    "test": " mocha --compilers js:babel-core/register server/dummy_data/test.js --timeout 10000ms"
   },
   "repository": {
     "type": "git",
