@@ -7,19 +7,23 @@ const data = ride;
 class PostRideRequest {
     static rideRequest(req, res){
         const {rideId} = req.params;
+        let newRide = [];
+        let ride_request = [];
         data.map((ride) => {
             if(parseInt(rideId, 10) == ride.id){
-                ride.ride_request.push(req.body.ride_request);
-                return res.status(201).json({
-                    message: `Success!! Your request to join ride with ID: ${ride.id} has be posted..`,
-                    ride_request: ride,
-                });
+                ride_request.push(req.body.ride_request);
+                newRide.push(ride_request)
             }
-        });
-        return res.status(200).json({
-            error: true,
-            message:'Ride does not exist..'
-        });
+                });
+            if (newRide.length == 0){
+                return res.status(404).json({
+                    message: 'ride does not exist..'
+                })
+            }
+            else{
+                return res.status(201).json(newRide)
+            }
+            }
+       
     }
-}
 export default PostRideRequest;
