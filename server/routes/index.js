@@ -1,5 +1,5 @@
 import express from 'express';
-import { AllRides, GetSingleRide, PostRide }  from '../dummy_data/controllers/index'
+import { AllRides, GetSingleRide, PostRide, PostRideRequest }  from '../dummy_data/controllers/index'
 const router = express.Router();
 
 // defines routes
@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 router.get('/rides', AllRides.getAllRides);
 router.get('/rides/:rideId', GetSingleRide.singleRide);
 router.post('/rides', PostRide.newRide);
+router.post('/rides/:rideId/request', PostRideRequest.rideRequest);
 
 // catch all invalid routes
 router.get('*', (req, res) => res.status(404).json({
