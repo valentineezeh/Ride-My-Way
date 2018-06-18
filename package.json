@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/app.js --exec babel-node",
-    "test": " mocha --compilers js:babel-core/register server/dummy_data/test.js --timeout 10000ms"
+    "test": " nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register server/dummy_data/test.js --timeout 10000ms"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
   "keywords": [
-    "recipe"
+    "rideMyWay"
   ],
   "author": "Valentine Ezeh",
   "license": "ISC",
@@ -46,6 +46,8 @@
     "eslint-plugin-react": "^7.1.0",
     "istanbul": "^0.4.5",
     "mocha-istanbul": "^0.3.0",
-    "mocha-lcov-reporter": "^1.3.0"
+    "mocha-lcov-reporter": "^1.3.0",
+    "coveralls": "^2.13.1",
+    "nyc": "^11.1.0"
   }
 }
