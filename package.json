@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/app.js --exec babel-node",
-    "test": " nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register server/dummy_data/test.js --timeout 10000ms"
+    "test": " nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register server/dummy_data/test.js --timeout 10000ms",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
@@ -33,9 +35,7 @@
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "mocha": "^3.5.0",
-    "supertest": "^3.0.0",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
