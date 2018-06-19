@@ -9,6 +9,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
+  "engines": {
+    "node": "10.4.1"
+  },
   "repository": {
     "type": "git",
     "url": ""
