@@ -41,9 +41,10 @@
     "express": "^4.15.4",
     "mocha": "^3.5.0",
     "morgan": "~1.8.1",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.17.5",
     "rimraf": "^2.6.2",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "validator": "^10.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -80,6 +80,7 @@ describe('API Endpoints testing', () => {
             request.post('/api/v1/rides')
                 .send(data)
                 .end((err, res) => {
+                    //console.log("request: ", res, 'error: ', err)
                     expect(res.status).to.equal(201);
                     expect(res).to.be.an('object');
                 });
@@ -94,4 +95,4 @@ describe('API Endpoints testing', () => {
                 });
         });
     });
-});
+})
