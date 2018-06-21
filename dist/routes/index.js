@@ -10,6 +10,8 @@ var _express2 = _interopRequireDefault(_express);
 
 var _index = require('../dummy_data/controllers/index');
 
+var _index2 = require('../dummy_data/middleware/index');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
@@ -22,7 +24,7 @@ router.get('/', function (req, res) {
 // routes for ride-my-way
 router.get('/rides', _index.AllRides.getAllRides);
 router.get('/rides/:rideId', _index.GetSingleRide.singleRide);
-router.post('/rides', _index.PostRide.newRide);
+router.post('/rides', _index2.PostRideValidator.postRideValidator, _index.PostRide.newRide);
 router.post('/rides/:rideId/request', _index.PostRideRequest.rideRequest);
 
 // catch all invalid routes

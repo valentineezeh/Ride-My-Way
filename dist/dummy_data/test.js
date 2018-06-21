@@ -85,6 +85,7 @@ var ride_request = ['Tolu requested to join your ride', 'Ade requested to join y
         });
         (0, _mocha.it)('Should CREATE a new Ride in the application', function () {
             request.post('/api/v1/rides').send(data).end(function (err, res) {
+                //console.log("request: ", res, 'error: ', err)
                 expect(res.status).to.equal(201);
                 expect(res).to.be.an('object');
             });

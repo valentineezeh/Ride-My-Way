@@ -22,10 +22,9 @@ class PostRide{
             departure_time: req.body.departure_time,
             ride_request: [],
         });
-        res.status(201).json({
+        return res.status(201).json({
             message: 'Success!! Ride has been Created. ',
             rides: data,
-
         });
     }
 }
