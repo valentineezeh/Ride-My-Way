@@ -1,3 +1,4 @@
+import validator from 'validator';
 import ride from '../model/db';
 
 const data = ride;
