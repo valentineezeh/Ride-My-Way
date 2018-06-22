@@ -16,14 +16,14 @@ var RideRequestValidation = function () {
     _createClass(RideRequestValidation, null, [{
         key: 'rideRequest',
         value: function rideRequest(req, res, next) {
-            var error = [];
-            if (req.body.ride_request === undefined || req.body.ride_request.toString().trim() === '') {
+            if (req.body.request === undefined || req.body.request.toString().trim() === '') {
                 return res.send({
                     valid: false,
                     status: 400,
                     message: 'Ride Request should not be empty...'
                 });
             }
+            next();
         }
     }]);
 
