@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Offer Ride</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/offerRide.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/nav.css" />
+    <script type="text/javascript" src="./js/main.js"></script>
+</head>
+<body>  
+    <!-- Navigation Bar -->
+    <div class="topnav" id="myTopnav" style="margin-top: -10px; margin-left: -10px; margin-right: -12px">
+      <a href="index.html" class="active">Home</a>
+      <a href="allRides.html">All Rides</a>
+      <a href="offerRide.html">Offer a Ride</a>
+      <a href="profile.html">Profile</a>
+      <a href="contactUs.html">Contact Us</a>
+      <a href="index.html">Log Out</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <! Form to Post a Ride.. >
+    <h1>Offer a Ride Form</h1>
+    <div class="container" style="margin-top: 2rem">
+      
+            <form action="">
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">From</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="fname" name="From" placeholder="Stating Location..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">To</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="lname" name="to" placeholder="Final Destination">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">Nature of Trip</label>
+                </div>
+                <div class="col-75">
+                  <select id="country" name="natureoftrip">
+                    <option value="oneway">One-Way</option>
+                    <option value="roundtrip">Round Trip</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                  <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <input type="submit" value="Offer Ride">
+              </div>
+            </form>
+          </div>
+</body>
+</html>
