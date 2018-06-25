@@ -8,43 +8,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/nav.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/login.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/contactUs.css" />
     <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
     
 </head>
 <body>
      <!-- Navigation Bar -->
-  <div class="topnav" id="myTopnav" style="margin-top: -10px; margin-left: -10px; margin-right: -12px">
+  <div class="topnav" id="myTopnav" style="margin-top: -10px; margin-left: -10px; margin-right: -12px; padding-right: 4vw; padding-left: 4vw; padding-top: 2vh; ">
         <a href="index.html" class="active">Home</a>
         <a href="allRides.html">All Rides</a>
-        <a href="offerRide.html">Offer a Ride</a>
-        <a href="profile.html">Profile</a>
+        <!-- <a href="offerRide.html">Offer a Ride</a> -->
+        <!-- <a href="profile.html">Profile</a> -->
+        <a href="#login" onclick="document.getElementById('id01').style.display='block'">Login</a>
         <a href="#contact">Contact Us</a>
-        <a href="index.html">Log Out</a>
+        
+        <!-- <a href="index.html">Log Out</a> -->
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
       </div>
 
-      <div class="container" style="margin-top: 2rem">
-          <h1>Contact Us</h1>
-            <form action="#" >
-          
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name..">
-          
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-  
-              <label for="lname">Email</label>
-              <input type="text" id="lname" name="email" placeholder="Your email..">
-                 
-              <label for="subject">Message</label>
-              <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-          
-              <input type="submit" value="Submit">
-          
-            </form>
-          </div> 
+      <div class="container1">  
+      <form id="contact" action="" method="post">
+        <h3>Contact Us</h3>
+        <h4>Fill in the form to contact us.</h4>
+        <fieldset>
+          <input placeholder="Enter First Name" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Enter Last Name" type="text" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Enter Email" type="email" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+          <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+        </fieldset>
+        <fieldset>
+          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+        </fieldset>
+      </form> 
+    </div>
+
+
+    <!--Modal form for Login Form-->
+    <!Login Form>
+    <!-- The Modal -->
+    <div id="id01" class="modal" style="margin-top: -10px; margin-left: -10px; margin-right: -12px">
+        <span onclick="document.getElementById('id01').style.display='none'" 
+      class="close" title="Close Modal">&times;</span>
+      
+        <!-- Modal Content -->
+        <form class="modal-content animate" action="/action_page.php">
+          <div class="imgcontainer">
+            <img src="./image/img.png" alt="Avatar" class="avatar" style="width: 20%; height: 30%;">
+          </div>
+      
+          <div class="container">
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="uname" required>
+      
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+      
+            <button type="submit">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+      
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+      </div>
 </body>
 </html>

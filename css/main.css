@@ -13,6 +13,8 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    font-family: Cambria;
+
 }
 
 /* Change the color of links on hover */
@@ -58,7 +60,7 @@ body, html {
 }
 
 .hero-text button {
-  border: none;
+  border: 20px;
   outline: 0;
   display: inline-block;
   padding: 10px 25px;
@@ -66,7 +68,8 @@ body, html {
   background-color: #4CAF50;
   text-align: center;
   cursor: pointer;
-}
+  
+} 
 
 .hero-text button:hover {
   background-color: #555;
