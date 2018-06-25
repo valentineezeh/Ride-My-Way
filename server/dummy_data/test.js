@@ -159,7 +159,7 @@ describe('API Endpoints testing', () => {
         it('Respond with 400 Bad Request', ()=>{
             request.post('/api/v1/rides')
             .send({
-                ride_request: [], 
+                ride_request 
             })
                 .end((err, res) => {
                     if(err){
