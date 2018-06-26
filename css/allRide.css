@@ -1,9 +1,12 @@
 /* Three columns side by side */
 .column {
     float: left;
-    width: 32.0%;
+    width: 25.0%;
+    height: 10.0%;
     margin-bottom: 16px;
-    padding: 0 8px;
+    padding-right: 3vw;
+    padding-left: 5vw;
+    
 }
 
 /* Display the columns below each other instead of side by side on small screens */
@@ -33,6 +36,8 @@
 
 .title {
     color: grey;
+    font-size: 16px;
+    font-family: cursive;
 }
 
 .button {

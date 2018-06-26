@@ -8,6 +8,7 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: none;
     background: #f1f1f1;
+    padding-left: 2em;
 }
 
 /* Add a background color when the inputs get focus */
@@ -35,14 +36,19 @@ button:hover {
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;
-    background-color: #f44336;
+    background-color: #4CAF50;
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+.cancelbtn {
   float: left;
-  width: 10%;
+  width: 50%;
 }
+
+.signupbtn {
+    float: right;
+    width: 20%;
+  }
 
 /* Add padding to container elements */
 .container {
@@ -56,8 +62,8 @@ button:hover {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 20%; /* Full width */
-    height: 7%; /* Full height */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: #474e5d;
     padding-top: 50px;
@@ -68,7 +74,8 @@ button:hover {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 10%; /* Could be more or less, depending on screen size */
+    width: 80%; /* Could be more or less, depending on screen size */
+    padding-left: 20px;
 }
 
 /* Style the horizontal ruler */
