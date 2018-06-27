@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import app from '../app';
 import data from './model/db';
 import { beforeEach, describe, it } from 'mocha';
-import { doesNotReject } from 'assert';
+
 
 const {expect} = chai.expect;
 const request = supertest(app);

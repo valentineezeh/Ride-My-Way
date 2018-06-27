@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import router from './routes/apiRoutes.js';
+import router from './routes/apiRoutes';
 
 // Call express from a variable
 const app = express();
@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect all routes to application
 app.use('/api/v1', router);
+//app.use('/api/v1', dummy_router);
 
 const port = +process.env.PORT || 3000;
 app.set('port', port);
