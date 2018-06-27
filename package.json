@@ -11,7 +11,8 @@
     "build:prod": "npm run clean:dist && babel ./server --out-dir dist",
     "test": " nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register server/dummy_data/test.js --timeout 10000ms",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "createDb": "psql -U postgres -f ./server/db/data.sql"
   },
   "engines": {
     "node": "10.4.1"
