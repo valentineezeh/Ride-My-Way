@@ -2,3 +2,4 @@
 .env
 /nyc/
 /coverage/
+/.nyc_output/
