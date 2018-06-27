@@ -1,8 +1,8 @@
 import express from 'express';
 // import { AllRides, GetSingleRide, PostRide, PostRideRequest }  from '../dummy_data/controllers/index';
 // import {PostRideValidator, RideRequestValidation} from '../dummy_data/middleware/index';
-import SignUpValidation from '../middleware/userValidator';
-import SignUp from '../users/user.controller';
+import { SignUpValidation, SignInValidation} from '../middleware/index';
+import { SignUp, SignInController } from '../users/index';
 const router = express.Router();
 
 // defines routes
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 
 // routes for ride-my-way
 router.post('/auth/signup', SignUpValidation.signUp, SignUp.createUser);
+router.post('/auth/login', SignInValidation.signIn, SignInController.signInUser);
 // router.get('/rides', AllRides.getAllRides);
 // router.get('/rides/:rideId', GetSingleRide.singleRide);
 // router.post('/rides', PostRideValidator.postRideValidator , PostRide.newRide);

@@ -158,7 +158,7 @@ var ride_request = ['Tolu requested to join your ride', 'Ade requested to join y
     (0, _mocha.describe)('Bad Request to POST a Ride in the application', function () {
         (0, _mocha.it)('Respond with 400 Bad Request', function () {
             request.post('/api/v1/rides').send({
-                ride_request: []
+                ride_request: ride_request
             }).end(function (err, res) {
                 if (err) {
                     expect(err).to.have.status(400);
