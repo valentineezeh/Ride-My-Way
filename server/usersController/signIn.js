@@ -8,7 +8,6 @@ const secret = process.env.SECRET_KEY;
 
 class SignInController{
     static signInUser (req, res, next){
-
         const text = "SELECT * FROM users WHERE email = $1";
         const values = [req.body.email]
         // console.log("meme")
