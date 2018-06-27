@@ -1,4 +1,4 @@
-import db from '../db';
+import client from '../db';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
@@ -8,8 +8,10 @@ const secret = process.env.SECRET_KEY;
 
 class SignInController{
     static signInUser (req, res, next){
-        const query = `SELECT * FROM users WHERE email=$1`
-       db.one(query, req.body.email)
+        const text = "SELECT * FROM users WHERE email = $1";
+        const values = [req.body.email]
+        // console.log("meme")
+       client.query(text, values)
        .then(user => {
         if(!user){
             return res.status(404).json({

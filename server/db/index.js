@@ -1,19 +1,18 @@
-const postgresPromise = require('pg-promise');
-const promise = require('bluebird');
+const {Client} = require('pg');
 
-const dbObject = {
-    initOptions: {
-        promiseLib: promise
-    },
-    connection: {
-        host: 'localhost',
-        port: 5432,
-        database: 'ridemyway',
-        user: 'postgres',
-        password: 'Sagemode2',
-    }
-};
-const pgp = postgresPromise(dbObject.initOptions);
-const db = pgp(dbObject.connection)
+const client = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    database: 'ridemyway',
+    password: 'Sagemode2',
+  })
+  client.connect()
 
-module.exports = db;
+  client.query('SELECT NOW()', (err, res) => {
+    //console.log(err, res)
+    client.end()
+  })
+
+
+module.exports = client;
