@@ -8,7 +8,7 @@ const dbObject = {
     connection: {
         host: 'localhost',
         port: 5432,
-        database: 'rideMyWay',
+        database: 'ridemyway',
         user: 'postgres',
         password: 'Sagemode2',
     }
