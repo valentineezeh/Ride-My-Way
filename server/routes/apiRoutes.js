@@ -1,6 +1,7 @@
 import express from 'express';
 import { SignUpValidation, SignInValidation, Auth, PostValidation } from '../middleware/index';
 import { UserController, RidesController } from '../controller/index';
+import RideRequestController from '../controller/rideRequest';
 
 const router = express.Router();
 
@@ -18,6 +19,9 @@ router.get('/rides', Auth.verify, RidesController.getAllRides)
 router.get('/rides/:rideId', Auth.verify, RidesController.getARide)
 
 router.post('/rides', Auth.verify, PostValidation.rideValidator, RidesController.postRide)
+
+//Routes for Ride Request
+router.get('/users/rides/:rideId/requests', Auth.verify, RideRequestController.getAllRideRequest)
 
 
 
