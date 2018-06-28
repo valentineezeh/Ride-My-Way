@@ -18,7 +18,7 @@ router.post('/auth/login', SignInValidation.signIn, UserController.signInUser);
 router.get('/rides', Auth.verify, RidesController.getAllRides)
 router.get('/rides/:rideId', Auth.verify, RidesController.getARide)
 
-router.post('/rides', Auth.verify, PostValidation.rideValidator, RidesController.postRide)
+router.post('/users/rides', Auth.verify, PostValidation.rideValidator, RidesController.postRide)
 
 //Routes for Ride Request
 router.get('/users/rides/:rideId/requests', Auth.verify, RideRequestController.getAllRideRequest)
