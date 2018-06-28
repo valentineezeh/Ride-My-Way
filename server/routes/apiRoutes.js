@@ -1,9 +1,7 @@
 import express from 'express';
-// import { AllRides, GetSingleRide, PostRide, PostRideRequest }  from '../dummy_data/controllers/index';
-// import {PostRideValidator, RideRequestValidation} from '../dummy_data/middleware/index';
-import { SignUpValidation, SignInValidation, Auth} from '../middleware/index';
-import { SignUp, SignInController } from '../usersController/index';
-import GetAllRides from "../ridesController/allRidesController";
+import { SignUpValidation, SignInValidation } from '../middleware/index';
+import UserController from '../controller/user.js';
+
 const router = express.Router();
 
 // defines routes
@@ -12,12 +10,9 @@ router.get('/', (req, res) => {
 });
 
 // routes for ride-my-way
-router.post('/auth/signup', SignUpValidation.signUp, SignUp.createUser);
-router.post('/auth/login', SignInValidation.signIn, SignInController.signInUser);
-router.get('/rides', Auth.verify, GetAllRides.getAllRides);
-// router.get('/rides/:rideId', GetSingleRide.singleRide);
-// router.post('/rides', PostRideValidator.postRideValidator , PostRide.newRide);
-// router.post('/rides/:rideId/request', PostRideRequest.rideRequest);
+router.post('/auth/signup', SignUpValidation.signUp, UserController.signUp);
+router.post('/auth/login', SignInValidation.signIn, UserController.signInUser);
+
 
 // catch all invalid routes
 router.get('*', (req, res) => res.status(404).json({
