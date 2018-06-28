@@ -1,6 +1,6 @@
 import express from 'express';
-import { SignUpValidation, SignInValidation } from '../middleware/index';
-import UserController from '../controller/user.js';
+import { SignUpValidation, SignInValidation, Auth } from '../middleware/index';
+import { UserController, RidesController } from '../controller/index';
 
 const router = express.Router();
 
@@ -12,6 +12,11 @@ router.get('/', (req, res) => {
 // routes for ride-my-way
 router.post('/auth/signup', SignUpValidation.signUp, UserController.signUp);
 router.post('/auth/login', SignInValidation.signIn, UserController.signInUser);
+
+// Routes for rides
+router.get('/rides', Auth.verify, RidesController.getAllRides)
+
+
 
 
 // catch all invalid routes
