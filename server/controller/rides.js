@@ -1,17 +1,13 @@
-import db from '../db';
+import client from '../db/index';
 
-class GetAllRides{
+class RidesController{
     static getAllRides(req, res, next){
-        db.any("select * from rides")
-        .then(data => {
+        client.query("select * from rides", (err, data) => {
+            if (err) return next(err);
             res.status(200).json({
-                status: 'success',
-                rides: data,
-                message: 'Retrieved All Ride List'
+                data: data.rows
             })
-        }).catch(err => {
-            return next(err);
-        })
+        })  
     }
 }
-export default GetAllRides
+export default RidesController;
