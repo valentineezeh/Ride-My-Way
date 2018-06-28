@@ -15,6 +15,7 @@ router.post('/auth/login', SignInValidation.signIn, UserController.signInUser);
 
 // Routes for rides
 router.get('/rides', Auth.verify, RidesController.getAllRides)
+router.get('/rides/:rideId', Auth.verify, RidesController.getARide)
 
 
 
