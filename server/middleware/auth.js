@@ -16,7 +16,7 @@ const Auth = {
                         message: 'You do not have permission to this page.'
                     });
                 }else{
-                    // if everything is good, save to reques for use in other routes
+                    // if everything is good, save to request for use in other routes
                     req.decoded = decoded;
                     next();
                 }
