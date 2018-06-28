@@ -25,7 +25,8 @@
   /*----- Search -----*/
 .search-form {
 	float: right;
-	display:inline-block;
+  display:inline-block;
+  margin-top: 6px;
 }
 
 .search-form input {

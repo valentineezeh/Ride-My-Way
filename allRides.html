@@ -7,18 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./css/login.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/nav.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/allRide.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/detail2.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/viewRide.css" />
     <script type="text/javascript" src="./js/main.js"></script>
-    <script type="text/javascript" src="./js/login.js"></script>
+    <script type="text/javascript" src="./js/detail1.js"></script>
 </head>
 <body>
      <!-- Navigation Bar -->
   <div class="topnav" id="myTopnav" style="padding-right: 4vw; padding-left: 4vw; padding-top: 2vh; ">
-    <a href="index.html" class="active">Home</a>
-    <a href="allRides.html">All Rides</a>
-    <a href="#login" onclick="document.getElementById('id01').style.display='block'">Login</a>
+    <a href="index.html" >Home</a>
+    <a href="myRide.html" >My Rides</a>
+    <a href="allRide.html" class="active">All Rides</a>
+    <a href="offerRide.html">Offer Rides</a>
+    <a href="profile.html">Profile</a>
     <!-- <a href="offerRide.html">Offer a Ride</a> -->
     <!-- <a href="profile.html">Profile</a> -->
     <a href="contactUs.html">Contact Us</a>
@@ -29,11 +32,9 @@
     </a>
     <form class="search-form">
       <input type="search" placeholder="Search">
-    <button>search</button>
+    <button style = "background-color: #4CAF50; color: white">search</button>
     </form>
   </div>
-
-  
 
   <! Group of Cards>
   <div class="row" style="margin-top: 2rem">
@@ -46,8 +47,8 @@
           <p class="title">To: Destination Stop Point</p>
           <p>Adetokunbo Ademola Street, Eti-Osa</p>
           <p>Departure Time: 06:00 PM</p>
-          <p><button class="button"><a href="detail.html" style="color: white">View Details</a></button></p>
-          <!-- <p><button class="button">Join</button></p> -->
+          <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Details</button>
+          
         </div>
       </div>
     </div>
@@ -63,7 +64,7 @@
           <p style="align-content: center">Ajah Lagos</p>
           <p>Departure Time: 04:00 PM</p>  
           <!-- <p><a href="detail.html"><button class="button">View Details</button></a></p> -->
-          <p><button class="button"><a href="detail.html" style="color: white">View Details</a></button></p>
+          <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Details</button>
         </div>
       </div>
     </div>
@@ -78,7 +79,7 @@
             <p class="title">To: Destination Stop Point</p>
             <p>Danube Street, Abuja, Federal Capital Territory, Nigeria</p>
             <p>Departure Time: 05:00 PM</p>  
-            <p><button class="button"><a href="detail.html" style="color: white">View Details</a></button></p>
+            <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Details</button>
         </div>
       </div>
     </div>
@@ -92,7 +93,7 @@
               <p class="title">To: Destination Stop Point</p>
               <p>Amuwo Odofin</p>
               <p>Departure Time: 07:00 PM</p>  
-              <p><button class="button"><a href="detail.html" style="color: white">View Details</a></button></p>
+              <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Details</button>
           </div>
         </div>
       </div>
@@ -106,7 +107,7 @@
               <p class="title">To: Destination Stop Point</p>
               <p>Victoria Island, Eti-Osa</p>
               <p>Departure Time: 03:00 PM</p>  
-              <p><button class="button"><a href="detail.html" style="color: white">View Details</a></button></p>
+              <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Details</button>
           </div>
         </div>
       </div>
@@ -120,47 +121,53 @@
               <p class="title">To: Destination Stop Point</p>
               <p>Omole Bus Stop, Isheri Road, Ikeja</p>
               <p>Departure Time: 07:00 PM</p>  
-              <p><button class="button"><a href="detail.html" style="color: white">View Details</a></button></p>
+              <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Details</button>
           </div>
         </div>
       </div>
   </div>
+  <!--Modal S-->
+  <div id="id02" class="modal">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <div style="overflow-x:auto; background-color: white; padding: 20px; width: 60%; margin: 0 auto;">
+        <table>
+          <h1>Ride Details</h1>
+          <thead>
+              <tr>
+                  <th> Rides</th>
+                  <th> Details</th>
+                </tr>
+          </thead>
+         
+          <tr>
+            <td> Start destintion </td>
+            <td>Herbert Macaulay Road, Lagos Mainland</td>
+          </tr>
+          <tr>
+            <td> Final destination </td>
+            <td>Amuwo Odofin</td>
+          </tr>
+          <tr>
+            <td>Destination Time</td>
+            <td>07:00 PM</td>
+          </tr>
+          <tr>
 
-  <!Login Form>
-<!-- The Modal -->
-<div id="id01" class="modal" style="margin-top: -10px; margin-left: -10px; margin-right: -12px">
-    <span onclick="document.getElementById('id01').style.display='none'" 
-  class="close" title="Close Modal">&times;</span>
-  
-    <!-- Modal Content -->
-    <form class="modal-content animate" action="/action_page.php">
-      <div class="imgcontainer">
-        <img src="./image/img.png" alt="Avatar" class="avatar" style="width: 20%; height: 30%;">
+          </tr>
+        </table>
+        <div style="text-align: center; content: '' ; clear: both; display: flex; justify-content: center; ">
+          <button style="background-color: green; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto">Accept</button>
+          &nbsp;
+          <button style="background-color: #f44336; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto;">Reject</button>
+        </div>
       </div>
-  
-      <div class="container">
-        <label for="uname"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="uname" required>
-  
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-  
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-  
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
-    </form>
-  </div>
+  </div> 
 </body>
 <div class="footer">
   <footer>
     <p>&copy; Copyright 2018 Ride-My-Way</p>
   </footer>
 </div>
+
+
 </html>

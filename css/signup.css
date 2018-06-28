@@ -35,7 +35,7 @@ button:hover {
 
 /* Extra styles for the cancel button */
 .cancelbtn {
-    padding: 14px 20px;
+    padding: 80px 200px;
     background-color: #4CAF50;
 }
 
@@ -51,7 +51,7 @@ button:hover {
   }
 
 /* Add padding to container elements */
-.container {
+.Signupcontainer {
     padding: 16px;
 }
 
@@ -102,6 +102,8 @@ hr {
 
 /* Clear floats */
 .clearfix::after {
+
+    text-align: center;
     content: "";
     clear: both;
     display: table;

@@ -13,20 +13,21 @@
 </head>
 <body>  
     <!-- Navigation Bar -->
-    <div class="topnav" id="myTopnav" style="margin-top: -10px; margin-left: -10px; margin-right: -12px; padding-right: 4vw; padding-left: 4vw; padding-top: 2vh; ">
-      <a href="index.html" class="active">Home</a>
+    <div class="topnav" id="myTopnav" style="     padding-right: 4vw; padding-left: 4vw; padding-top: 2vh; ">
+      <a href="index.html">Home</a>
+      <a href="myRide.html">My Ride</a>
       <a href="allRides.html">All Rides</a>
-      <a href="offerRide.html">Offer a Ride</a>
+      <a href="offerRide.html" class="active">Offer a Ride</a>
       <a href="profile.html">Profile</a>
       <a href="contactUs.html">Contact Us</a>
       <a href="index.html">Log Out</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
       </a>
-      <form class="search-form" style="margin-top: 11px" style="color: green">
+      <!-- <form class="search-form" style="margin-top: 11px" style="color: green">
         <input type="Search" placeholder="Search">
         <button>search</button>
-      </form>
+      </form> -->
     </div>
 
     <! Form to Post a Ride.. >
@@ -45,9 +46,6 @@
         </fieldset>
         <fieldset>
           <input placeholder="Departure Time" type="text" tabindex="4" required>
-        </fieldset>
-        <fieldset>
-          <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
         </fieldset>
         <fieldset>
           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Create Ride</button>

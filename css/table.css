@@ -1,0 +1,24 @@
+.tableStyle{
+    overflow-x: auto;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 80%;
+    align-content: center;
+    text-align: center; 
+    content: '' ; 
+    clear: both; 
+    display: flex; 
+    justify-content: center;
+}
+
+.tableStyle button{
+    background-color: green; 
+    color: white; 
+    padding: 10px 22px; 
+    margin: 9px 0; 
+    border: none; 
+    cursor: pointer; 
+    width: auto
+}
+
