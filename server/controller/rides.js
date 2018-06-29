@@ -38,13 +38,15 @@ class RidesController{
     }
 
     static postRide (req, res, next) {
-        const text = "INSERT INTO rides(destinationstartpoint, destinationstoppoint, departuretime) VALUES ($1, $2, $3) RETURNING id";
+
+        const text = "INSERT INTO rides(destinationstartpoint, destinationstoppoint, departuretime, userId, created_at) VALUES ($1, $2, $3, $4, Now()) RETURNING *";
         const values = [
             req.body.destinationstartpoint,
             req.body.destinationstoppoint,
             req.body.departuretime,
+            req.decoded.userId
         ]
-        //console.log(req.decoded.id)
+        console.log(req)
         client.query(text, values, (err, data) => {
            if(err) return next(err)
            //console.log(data)
