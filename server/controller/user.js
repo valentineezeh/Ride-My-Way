@@ -1,18 +1,21 @@
 import client from '../db';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt'
 
 dotenv.config();
 
 const secret = process.env.SECRET_KEY;
 class UserController{
     static signUp (req, res, next) {
-        const query = 'INSERT INTO users(firstname, lastname, sex, email, password, confirmpassword) VALUES($1, $2, $3, $4, $5, $6) RETURNING *';
+        const query = 'INSERT INTO users(firstname, lastname, sex, email, password, confirmpassword, created_at) VALUES($1, $2, $3, $4, $5, $6, Now() ) RETURNING *';
         const values =[
-            req.body.firstname, req.body.lastname, 
+            req.body.firstname, 
+            req.body.lastname, 
             req.body.sex, 
-            req.body.email, req.body.password, 
-            req.body.confirmPassword
+            req.body.email, 
+            bcrypt.hashSync(req.body.password, 10),
+            bcrypt.hashSync(req.body.confirmPassword, 10)
         ]
         client.query(query, values, (err, data) => {
             if (err) return next(err);
@@ -37,6 +40,20 @@ class UserController{
                }else if(data){
                    //console.log(data.rows.password)
                    let dataPassword = ''
+                   let dataEmail = ''
+                   let dataUserId = 0;
+                   
+                   console.log(data.rows)
+                   data.rows.map(user => {
+                       //console.log(user)
+                       console.log(user.id)
+                     dataUserId += user.id;
+                      dataEmail += user.email;
+                      //console.log(datauserIdNum)
+
+                   })
+                   
+                   console.log(dataUserId)
                    data.rows.map((user) => {
                        if (req.body.password == user.password){
                            dataPassword += user.password
@@ -49,15 +66,24 @@ class UserController{
                            message: 'Authentication failed, wrong Password'
                        });
                    }else{
-                       const token = jwt.sign({
-                           email: data.email,
-                           userId: data.id,
-                       }, secret, {expiresIn: 1440});
-                       return res.status(200).json({
-                           success: true,
-                           message: "Welcome User You are now Logged In",
-                           token
+                       bcrypt.compare(req.body.password, dataPassword, (err, response) => {
+                           if(err){
+                               return res.status(500).json({
+                                   error: err.message
+                               })
+                           }else{
+                            const token = jwt.sign({
+                                email: dataEmail,
+                                userId: dataUserId,
+                            }, secret, {expiresIn: 1440});
+                            return res.status(200).json({
+                                success: true,
+                                message: "Welcome User You are now Logged In",
+                                token
+                            })
+                           }
                        })
+                       
                    }
                }
            }else{
