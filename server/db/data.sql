@@ -10,7 +10,9 @@ CREATE TABLE users (
     sex VARCHAR NOT NULL,
     email VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
-    confirmPassword VARCHAR NOT NULL
+    confirmPassword VARCHAR NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(), 
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
     );
 
 CREATE TABLE rides (
@@ -18,14 +20,18 @@ CREATE TABLE rides (
     destinationStartPoint VARCHAR NOT NULL,
     destinationStopPoint VARCHAR NOT NULL,
     departureTime VARCHAR NOT NULL,
-    userId INTEGER REFERENCES users(id)
+    userId INTEGER REFERENCES users(id),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(), 
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE rideRequests (
     id SERIAL PRIMARY KEY,
     rideRequest VARCHAR NOT NULL,
     userId INTEGER REFERENCES users(id),
-    rideId INTEGER REFERENCES rides(id)
+    rideId INTEGER REFERENCES rides(id),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(), 
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
 
 INSERT INTO users (firstname, lastname, sex, email, password, confirmPassword) VALUES
