@@ -10,13 +10,13 @@ class SignUpValidation{
                 message: errors
             });
         }
-        // if(!validator.isEmail(req.body.email.toString())){
-        //     errors.push('Valid Email is required');
-        //     return res.status(400).send({
-        //         status: 'Error',
-        //         message: errors
-        //     })
-        // }
+        if(!validator.isEmail(req.body.email.toString())){
+            errors.push('Valid Email is required');
+            return res.status(400).send({
+                status: 'Error',
+                message: errors
+            })
+        }
         if(!validator.isAlpha(req.body.firstname.toString())){
             errors.push('First name must be alphabetic');
             return res.status(400).send({
