@@ -80,6 +80,13 @@ class SignUpValidation{
               message: errors
             });
           }
+          if (req.body.password == '') {
+            errors.push('Password should not be empty');
+            return res.status(400).send({
+              status: 'Error',
+              message: errors
+            });
+          }
           if (req.body.password.length <= 6) {
             errors.push('Password must exceed 6 characters..');
             return res.status(400).send({
@@ -91,7 +98,7 @@ class SignUpValidation{
               errors.push('Mismatch Password');
               return res.status(400).send({
                   status: 'Error',
-                  msg: errors
+                  message: errors
               })
           }
           if (errors.length > 0) {
@@ -100,7 +107,9 @@ class SignUpValidation{
               message: errors
             });
           }
-          return next();
+          
+        return next();
+        //console.log(errors)
     }
 }
 export default SignUpValidation;

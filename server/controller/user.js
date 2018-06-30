@@ -18,7 +18,10 @@ class UserController{
             bcrypt.hashSync(req.body.confirmPassword, 10)
         ]
         client.query(query, values, (err, data) => {
-            if (err) return next(err);
+            if (err) return res.status(409).send({
+                    success: false,
+                    message: 'User already exist.'
+            });
             else{
                 const token = jwt.sign({
                     id: data.rows.id
