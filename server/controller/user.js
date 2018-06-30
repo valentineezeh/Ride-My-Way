@@ -9,7 +9,6 @@ const secret = process.env.SECRET;
 class UserController{
     static signUp (req, res, next) {
         const query = 'INSERT INTO users(firstname, lastname, about, email, password, confirmpassword, created_at) VALUES($1, $2, $3, $4, $5, $6, Now() ) RETURNING *';
-        
         const values =[
             req.body.firstname, 
             req.body.lastname, 
@@ -20,9 +19,16 @@ class UserController{
         ]
         client.query(query, values, (err, data) => {
             if (err) return next(err);
-            res.status(201).json({
-                data: data.rows[0]
-            })
+            else{
+                const token = jwt.sign({
+                    id: data.rows.id
+                }, secret, {expiresIn: 1440});
+                res.status(201).json({
+                    message: 'User registration successful',
+                    data: data.rows[0],
+                    token
+                })
+            }
         })
         
     }
