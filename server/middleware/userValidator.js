@@ -59,13 +59,6 @@ class SignUpValidation{
               message: errors
             });
           }
-        //   if(!validator.isAlpha(req.body.about.toString())){
-        //     errors.push('About must be alphabetic');
-        //     return res.status(400).send({
-        //         status: 'Error',
-        //         message: errors
-        //     })
-        // }
         if (req.body.about === '') {
             errors.push('About text cannot be empty');
             return res.status(400).send({
