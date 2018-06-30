@@ -50,7 +50,7 @@ class UserController{
                    let dataEmail = ''
                    let dataUserId = 0;
                    
-                   console.log(data.rows)
+                   //console.log(data.rows)
                    data.rows.map(user => {
                        //console.log(user)
                        console.log(user.id)
@@ -60,7 +60,7 @@ class UserController{
 
                    })
                    
-                   console.log(dataUserId)
+                   //console.log(dataUserId)
                    data.rows.map((user) => {
                        if (req.body.password == user.password){
                            dataPassword += user.password

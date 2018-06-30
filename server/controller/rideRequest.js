@@ -28,14 +28,18 @@ class RideRequestController{
         })
     }
     static postRideRequest (req, res, next) {
-        const text = "INSERT INTO rideRequests (rideRequest, userId, rideId, created_at) VALUES ($1, $2, $3, Now()) RETURNING *";
+        const text = "INSERT INTO rideRequests (userId, rideId, created_at) VALUES ($1, $2, Now()) RETURNING *";
         const values = [
-            req.body.rideRequest,
             req.decoded.userId,
             req.params.rideId
         ]
         client.query(text, values, (err, data) =>{
-            if(err) return next(err);
+            if(err){
+                return res.status(400).json({
+                    success: false,
+                    message: 'Bad request! Ride does not exist.'
+                })
+            };
             res.status(201).json({
                 success: 'true',
                 message: "Ride Request has been posted.",
@@ -47,7 +51,6 @@ class RideRequestController{
     static putRideRequest (req, res, next){
         const text = "SELECT * FROM rideRequests WHERE userId = $1 AND rideId = $2";
         const values = [
-            req.body.rideRequest,
             req.decoded.userId,
             req.params.rideId
         ]

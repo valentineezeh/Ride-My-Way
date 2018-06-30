@@ -5,6 +5,8 @@ class RidesController{
         client.query("select * from rides", (err, data) => {
             if (err) return next(err);
             res.status(200).json({
+                success: true,
+                message: 'All Rides has been retrieve.',
                 data: data.rows
             })
         })  
@@ -24,10 +26,13 @@ class RidesController{
             });
             if (newRide.length == 0){
                 return res.status(404).json({
+                    success: false,
                     message: "Ride Record does not exist"
                 });
             }else{
                 return res.status(200).json({
+                    success: true,
+                    message: " Ride has been retrieve",
                     ride: newRide
                 })
             }
@@ -48,9 +53,15 @@ class RidesController{
         ]
         console.log(req)
         client.query(text, values, (err, data) => {
-           if(err) return next(err)
+           if(err) return res.status(500).json({
+               success: false,
+               message: 'Internal Server error',
+               error: next(err)
+           })
            //console.log(data)
             res.status(201).json({
+                        success: true,
+                        message: 'Ride have been Created',
                        data: data.rows
                    })
            })
