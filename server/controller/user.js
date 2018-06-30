@@ -5,14 +5,15 @@ import bcrypt from 'bcrypt'
 
 dotenv.config();
 
-const secret = process.env.SECRET_KEY;
+const secret = process.env.SECRET;
 class UserController{
     static signUp (req, res, next) {
-        const query = 'INSERT INTO users(firstname, lastname, sex, email, password, confirmpassword, created_at) VALUES($1, $2, $3, $4, $5, $6, Now() ) RETURNING *';
+        const query = 'INSERT INTO users(firstname, lastname, about, email, password, confirmpassword, created_at) VALUES($1, $2, $3, $4, $5, $6, Now() ) RETURNING *';
+        
         const values =[
             req.body.firstname, 
             req.body.lastname, 
-            req.body.sex, 
+            req.body.about, 
             req.body.email, 
             bcrypt.hashSync(req.body.password, 10),
             bcrypt.hashSync(req.body.confirmPassword, 10)

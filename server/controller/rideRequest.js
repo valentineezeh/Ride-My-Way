@@ -43,6 +43,24 @@ class RideRequestController{
             })
         })
     }
+    // UPDATE rideRequests SET RIDEREQUEST = $1, UPDATED_AT = $2 VALUES ($1, Now()) WHERE ID= $3 AND ID= $4"
+    static putRideRequest (req, res, next){
+        const text = "SELECT * FROM rideRequests WHERE userId = $1 AND rideId = $2";
+        const values = [
+            req.body.rideRequest,
+            req.decoded.userId,
+            req.params.rideId
+        ]
+        client.query(text, values, (err, data)=>{
+            if(data){
+                if(!data){
+                    return res.status(404).json({
+                        error: { form: "Ride does not exist"}
+                    })
+                }
+            }
+        })
+    }
 }
 
 export default RideRequestController;

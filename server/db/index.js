@@ -15,5 +15,5 @@ const client = new Pool({
       console.log('Connected');
     }
   });
-
+  
 module.exports = client;
