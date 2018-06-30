@@ -8,12 +8,12 @@ class PostRideRequest {
     static rideRequest(req, res){
         const {rideId} = req.params;
         const {request} = req.body
-        for (const [k] of Object.entries(ride)){
-            if(ride[k].id === parseInt(rideId, 10)){
-                ride[k].ride_request.push(request);
+        for (const [key] of Object.entries(ride)){
+            if(ride[key].id === parseInt(rideId, 10)){
+                ride[key].ride_request.push(request);
                 return res.status(201).json({
                      message: `Success! Ride Request have been added.`,
-                    ride: ride[k].ride_request
+                    ride: ride[key].ride_request
                 })
             }
         }

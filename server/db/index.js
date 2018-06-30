@@ -1,11 +1,15 @@
+import dotenv from 'dotenv';
+
 const {Pool} = require('pg');
 
+dotenv.config();
+
 const client = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    database: 'ridemyway',
-    password: 'Sagemode2',
+    user: process.env.USER,
+    host: process.env.HOST,
+    port: process.env.DATABASEPORT,
+    database: process.env.DATABASE,
+    password: process.env.PASSWORD,
   })
   
   client.connect((err) => {
