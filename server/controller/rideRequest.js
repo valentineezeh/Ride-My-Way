@@ -63,7 +63,7 @@ class RideRequestController{
                         error: { form: "Ride does not exist"}
                     })
                 }else{
-                    const text = "UPDATE riderequest SET accept = $1, reject = $2, updated_at = Now() WHERE ID = $4"
+                    const text = "UPDATE riderequests SET accept = $1, reject = $2, updated_at = Now() WHERE ID = $3"
                     const values = [
                         req.body.accept,
                         req.body.reject,
@@ -71,9 +71,21 @@ class RideRequestController{
                     ]
                     console.log(req.body.accept, req.body.reject, req.params.id)
                     client.query(text, values, (err, data) => {
-                        console.log(err)
+                        console.log(data.rows)
                         if(data){
-                            return res.status(200).json(data)
+                            console.log(req.body.accept)
+                            if(req.body.accept === 'true'){
+                            console.log('================================')
+                            return res.status(200).json({
+                                    success: true,
+                                    message: 'rides has been accepted.'
+                                })
+                            }else{
+                                return res.status(200).json({
+                                    success: true,
+                                    message: 'rides have be rejected'
+                                })
+                            }
                         }else{
                             //console.log(data)
                             return res.status(500).json(err.message)
