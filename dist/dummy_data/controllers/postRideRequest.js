@@ -37,13 +37,13 @@ var PostRideRequest = function () {
             try {
                 for (var _iterator = Object.entries(_db2.default)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var _step$value = _slicedToArray(_step.value, 1),
-                        k = _step$value[0];
+                        key = _step$value[0];
 
-                    if (_db2.default[k].id === parseInt(rideId, 10)) {
-                        _db2.default[k].ride_request.push(request);
+                    if (_db2.default[key].id === parseInt(rideId, 10)) {
+                        _db2.default[key].ride_request.push(request);
                         return res.status(201).json({
                             message: 'Success! Ride Request have been added.',
-                            ride: _db2.default[k].ride_request
+                            ride: _db2.default[key].ride_request
                         });
                     }
                 }

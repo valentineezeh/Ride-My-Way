@@ -1,21 +1,30 @@
 'use strict';
 
-var postgresPromise = require('pg-promise');
-var promise = require('bluebird');
+var _dotenv = require('dotenv');
 
-var dbObject = {
-    initOptions: {
-        promiseLib: promise
-    },
-    connection: {
-        host: 'localhost',
-        port: 5432,
-        database: 'ridemyway',
-        user: 'postgres',
-        password: 'Sagemode2'
-    }
-};
-var pgp = postgresPromise(dbObject.initOptions);
-var db = pgp(dbObject.connection);
+var _dotenv2 = _interopRequireDefault(_dotenv);
 
-module.exports = db;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _require = require('pg'),
+    Pool = _require.Pool;
+
+_dotenv2.default.config();
+
+var client = new Pool({
+  user: process.env.USER,
+  host: process.env.HOST,
+  port: process.env.DATABASEPORT,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD
+});
+
+client.connect(function (err) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('Connected');
+  }
+});
+
+module.exports = client;
