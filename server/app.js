@@ -3,6 +3,7 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import router from './routes/apiRoutes';
 
+
 // Call express from a variable
 const app = express();
 
