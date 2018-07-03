@@ -3,17 +3,17 @@ class PostValidation {
         const error = [];
         if (req.body.destinationstartpoint === undefined) {
             return res.status(400).send({
-                msg: 'destination start point is required'
+                message: 'destination start point is required'
             });
         }
         if (req.body.destinationstoppoint === undefined) {
             return res.status(400).send({
-                msg: 'destination stop point is required'
+                message: 'destination stop point is required'
             });
         }
         if (req.body.departuretime === undefined) {
             return res.status(400).send({
-                msg: 'departure time is required'
+                message: 'departure time is required'
             });
         }
         if (req.body.destinationstartpoint.toString().trim() === '') {
@@ -27,7 +27,7 @@ class PostValidation {
         }
         if (error.length > 0) {
             return res.status(400).send({
-                msg: error
+                message: error
             });
         }
         return next();

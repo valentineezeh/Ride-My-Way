@@ -27,6 +27,8 @@ CREATE TABLE rides (
 
 CREATE TABLE rideRequests (
     id SERIAL PRIMARY KEY,
+    accept BOOLEAN NOT NULL,
+    reject BOOLEAN NOT NULL,
     userId INTEGER REFERENCES users(id),
     rideId INTEGER REFERENCES rides(id),
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(), 
@@ -43,8 +45,8 @@ INSERT INTO rides (destinationStartPoint, destinationStopPoint, departureTime, u
     ('CMS, Lagos Island', 'Ajah Lagos', '04:00 PM', 2),
     ('Gwarinpa Estate, Abuja, Federal Capital Territory, Nigeria', 'Danube Street, Abuja, Federal Capital Territory, Nigeria', '05:00 PM', 3);
 
-INSERT INTO rideRequests (userId, rideId) VALUES
-    (1, 1),
-    (2, 2),
-    (3, 3);
+INSERT INTO rideRequests (accept, reject, userId, rideId) VALUES
+    (TRUE, FALSE, 1, 1),
+    (TRUE, FALSE, 2, 2),
+    (TRUE, FALSE, 3, 3);
 

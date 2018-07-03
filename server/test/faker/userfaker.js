@@ -49,8 +49,8 @@ const userfake = {
         password: '1234567'
     },
     loginUser1: {
-        email: 'chika9@example.com',
-        password: '$2b$10$XbXqsOMvxNDgy6nXHNITmOGVplfoxDhvGW.FW6iuVj89B4m/Q/F0u'
+        email: 'val0@example.com',
+        password: '$2b$10$GCM.k4hvdcGirdOxS5b2DeMMg524R0HZ1Jg.XRb0sbYv0l00g7zGK'
     },
     loginUser2: {
         email: 'testuser@example.com',
