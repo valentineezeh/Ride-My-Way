@@ -16,7 +16,7 @@ var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _apiRoutes = require('./routes/apiRoutes.js');
+var _apiRoutes = require('./routes/apiRoutes');
 
 var _apiRoutes2 = _interopRequireDefault(_apiRoutes);
 
@@ -34,6 +34,7 @@ app.use(_bodyParser2.default.urlencoded({ extended: false }));
 
 // Connect all routes to application
 app.use('/api/v1', _apiRoutes2.default);
+//app.use('/api/v1', dummy_router);
 
 var port = +process.env.PORT || 3000;
 app.set('port', port);

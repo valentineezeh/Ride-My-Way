@@ -79,22 +79,15 @@ var SignUpValidation = function () {
           message: errors
         });
       }
-      if (!_validator2.default.isAlpha(req.body.sex.toString())) {
-        errors.push('First name must be alphabetic');
+      if (req.body.about === '') {
+        errors.push('About text cannot be empty');
         return res.status(400).send({
           status: 'Error',
           message: errors
         });
       }
-      if (req.body.sex === '') {
-        errors.push('First name cannot be empty');
-        return res.status(400).send({
-          status: 'Error',
-          message: errors
-        });
-      }
-      if (req.body.sex.length <= 1) {
-        errors.push('Length of the first name should be greater than 1 character..');
+      if (req.body.about.length <= 6) {
+        errors.push('Length of the about should be greater than 1 character..');
         return res.status(400).send({
           status: 'Error',
           message: errors
@@ -102,6 +95,13 @@ var SignUpValidation = function () {
       }
       if (req.body.password == undefined) {
         errors.push('Valid Password required...');
+        return res.status(400).send({
+          status: 'Error',
+          message: errors
+        });
+      }
+      if (req.body.password == '') {
+        errors.push('Password should not be empty');
         return res.status(400).send({
           status: 'Error',
           message: errors
@@ -118,7 +118,7 @@ var SignUpValidation = function () {
         errors.push('Mismatch Password');
         return res.status(400).send({
           status: 'Error',
-          msg: errors
+          message: errors
         });
       }
       if (errors.length > 0) {
@@ -127,7 +127,9 @@ var SignUpValidation = function () {
           message: errors
         });
       }
+
       return next();
+      //console.log(errors)
     }
   }]);
 

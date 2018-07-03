@@ -18,8 +18,6 @@ var _db2 = _interopRequireDefault(_db);
 
 var _mocha = require('mocha');
 
-var _assert = require('assert');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var expect = _chai2.default.expect.expect;
