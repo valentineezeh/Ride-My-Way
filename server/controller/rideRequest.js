@@ -28,8 +28,10 @@ class RideRequestController{
         })
     }
     static postRideRequest (req, res, next) {
-        const text = "INSERT INTO rideRequests (userId, rideId, created_at) VALUES ($1, $2, Now()) RETURNING *";
+        const text = "INSERT INTO rideRequests (accept, reject, userId, rideId, created_at) VALUES ($1, $2, $3, $4, Now()) RETURNING *";
         const values = [
+            req.body.accept,
+            req.body.reject,
             req.decoded.userId,
             req.params.rideId
         ]
@@ -59,6 +61,23 @@ class RideRequestController{
                 if(!data){
                     return res.status(404).json({
                         error: { form: "Ride does not exist"}
+                    })
+                }else{
+                    const text = "UPDATE riderequest SET accept = $1, reject = $2, updated_at = Now() WHERE ID = $4"
+                    const values = [
+                        req.body.accept,
+                        req.body.reject,
+                        req.params.id
+                    ]
+                    console.log(req.body.accept, req.body.reject, req.params.id)
+                    client.query(text, values, (err, data) => {
+                        console.log(err)
+                        if(data){
+                            return res.status(200).json(data)
+                        }else{
+                            //console.log(data)
+                            return res.status(500).json(err.message)
+                        }
                     })
                 }
             }
