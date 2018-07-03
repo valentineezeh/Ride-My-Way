@@ -20,7 +20,7 @@ class UserController{
         client.query(query, values, (err, data) => {
             if (err) return res.status(409).send({
                     success: false,
-                    message: 'User already exist.'
+                    message: err
             });
             else{
                 const token = jwt.sign({
