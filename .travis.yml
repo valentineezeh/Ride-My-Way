@@ -10,6 +10,7 @@ services:
 before_script:
  - psql -c 'drop database if exists ridemyway;' -U postgres
  - psql -c 'create database ridemyway;' -U postgres
+ - npm run createDb
 
 env:
  - SECRET=thelordismyhelperishallnotwant
