@@ -14,12 +14,12 @@ class RidesController{
     static getARide(req, res, next){
         client.query('SELECT * FROM rides WHERE id = $1', [req.params.rideId], (err, data)=>{
             if (data){
-                console.log(data.rows)
+                //console.log(data.rows)
                 let newRide = [];
                 // let newRideNum = parseInt(newRide, 10);
                 // console.log(newRideNum)
                 data.rows.map((ride) => {
-                    console.log(ride.id)
+                    //console.log(ride.id)
                     if(ride.id === parseInt(req.params.rideId, 10)){
                         newRide.push(ride)
             }
@@ -51,7 +51,7 @@ class RidesController{
             req.body.departuretime,
             req.decoded.userId
         ]
-        console.log(req)
+        //console.log(req)
         client.query(text, values, (err, data) => {
            if(err) return res.status(500).json({
                success: false,

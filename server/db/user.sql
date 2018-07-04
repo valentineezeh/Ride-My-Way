@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS ridemyway;
+CREATE DATABASE ridemyway;
+
+\c ridemyway
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR NOT NULL,

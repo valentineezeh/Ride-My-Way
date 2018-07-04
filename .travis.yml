@@ -4,3 +4,12 @@ node_js:
 script:
   - npm run test
 after_success: npm run coverage
+services:
+ - postgresql
+
+before_script:
+ - psql -c 'drop database if exists ridemyway;' -U postgres
+ - psql -c 'create database ridemyway;' -U postgres
+
+env:
+ - SECRET=thelordismyhelperishallnotwant

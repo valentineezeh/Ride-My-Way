@@ -14,13 +14,13 @@ class UserController{
             req.body.lastname, 
             req.body.about, 
             req.body.email, 
-            bcrypt.hashSync(req.body.password, 10),
-            bcrypt.hashSync(req.body.confirmPassword, 10)
+            req.body.password,
+            req.body.confirmPassword
         ]
         client.query(query, values, (err, data) => {
             if (err) return res.status(409).send({
                     success: false,
-                    message: err
+                    message: "User already exist."
             });
             else{
                 const token = jwt.sign({
@@ -56,7 +56,7 @@ class UserController{
                    //console.log(data.rows)
                    data.rows.map(user => {
                        //console.log(user)
-                       console.log(user.id)
+                       //console.log(user.id)
                      dataUserId += user.id;
                       dataEmail += user.email;
                       //console.log(datauserIdNum)

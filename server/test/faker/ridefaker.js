@@ -32,3 +32,4 @@ const rideFaker = {
         departuretime: ''
      },
 }
+export default rideFaker;

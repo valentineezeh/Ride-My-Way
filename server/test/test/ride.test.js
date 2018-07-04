@@ -4,6 +4,8 @@ import app from '../../app';
 import testData from '../faker/ridefaker';
 import validToken from '../../test/test/user.test';
 
+//console.log(testData)
+
 const { expect } = chai;
 
 describe('Ride-My-Way Rides Test', () => {
@@ -41,16 +43,17 @@ describe('Ride-My-Way Rides Test', () => {
               done();
           });
     });
-    // Not Passing DOnt know why?
+    // Passing
     it('should save ride to database if login is valid' +
-    'User and body is filled correctly', (done) => {
+    ' User and body is filled correctly', (done) => {
+        //console.log(testData.ride)
         request(app)
           .post('/api/v1/users/rides')
           .send(testData.ride)
           .set('authorization', validToken.token)
           .end((error, res) => {
               expect(201);
-              console.log(res.body)
+              //console.log(res.body)
               expect(res.body.data)
               if(error) done(error)
               done()
@@ -64,8 +67,8 @@ describe('Ride-My-Way Rides Test', () => {
           .set('authorization', validToken.token)
           .end((error, res) => {
               expect(400);
-              //console.log(res.body)
-              expect(res.body.message).to.include('destination start point is required');
+              //console.log(res.body.message)
+              expect(res.body.message).to.include('destination start point is required.');
               if(error) done(error)
               done()
           });
@@ -77,7 +80,8 @@ describe('Ride-My-Way Rides Test', () => {
           .set('authorization', validToken.token)
           .end((error, res) => {
               expect(400);
-              expect(res.body.message).to.include('destination start point is required');
+              //console.log(res.body)
+              expect(res.body.message).to.include('destination stop point is required.');
               if(error) done(error)
               done();
           })
@@ -89,7 +93,7 @@ describe('Ride-My-Way Rides Test', () => {
           .set('authorization', validToken.token)
           .end((error, res) => {
               expect(400);
-              expect(res.body.message).to.include('destination start point is required');
+              expect(res.body.message).to.include('destination time point is required.');
               if(error) done(error)
               done();
           })
@@ -116,7 +120,31 @@ describe('Ride-My-Way Rides Test', () => {
           if(error) done(error)
           done()
       })
+}) ;
+it('should return all rides in the application', (done) => {
+    request(app)
+      .get('/api/v1/rides')
+      .set('authorization', validToken.token)
+      .end((error, res) => {
+          expect(200);
+          //console.log(res.body.data)
+          expect(res.body.message).to.include('All Rides has been retrieve')
+          if(error) done(error)
+          done()
+      });
+});
 
-}) 
+it('should return all rides in the application', (done) => {
+    request(app)
+      .get('/api/v1/rides/1')
+      .set('authorization', validToken.token)
+      .end((error, res) => {
+          expect(200);
+          //console.log(res.body.data)
+          expect(res.body.message).to.include('Ride has been retrieve')
+          if(error) done(error)
+          done()
+      });
+});
   
 })

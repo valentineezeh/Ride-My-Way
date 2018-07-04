@@ -1,5 +1,5 @@
 import express from 'express';
-import { SignUpValidation, SignInValidation, Auth, PostValidation} from '../middleware/index';
+import { SignUpValidation, SignInValidation, Auth, PostValidation, RideRequestValidation} from '../middleware/index';
 import { UserController, RidesController } from '../controller/index';
 import RideRequestController from '../controller/rideRequest';
 
@@ -25,7 +25,7 @@ router.get('/users/rides/:rideId/requests', Auth.verify, RideRequestController.g
 
 router.post('/rides/:rideId/requests', Auth.verify, RideRequestController.postRideRequest)
 
-router.put('/users/rides/:rideId/requests/:id', Auth.verify, RideRequestController.putRideRequest)
+router.put('/users/rides/:rideId/requests/:id', Auth.verify, RideRequestValidation.rideRequest, RideRequestController.putRideRequest)
 
 
 
