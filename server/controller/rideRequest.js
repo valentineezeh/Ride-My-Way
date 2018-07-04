@@ -7,7 +7,7 @@ class RideRequestController{
                 let rideRequest = [];
                 //console.log(data.rows)
                 data.rows.map((request) => {
-                    console.log(request);
+                    //console.log(request);
                     if(request.id == parseInt(req.params.rideId, 10)){
                         //console.log(request.rideId);
                         rideRequest.push(request)
@@ -69,13 +69,13 @@ class RideRequestController{
                         req.body.reject,
                         req.params.id
                     ]
-                    console.log(req.body.accept, req.body.reject, req.params.id)
+                    //console.log(req.body.accept, req.body.reject, req.params.id)
                     client.query(text, values, (err, data) => {
-                        console.log(data.rows)
+                        //console.log(data.rows)
                         if(data){
-                            console.log(req.body.accept)
+                            //console.log(req.body.accept)
                             if(req.body.accept === 'true'){
-                            console.log('================================')
+                            //console.log('================================')
                             return res.status(200).json({
                                     success: true,
                                     message: 'rides has been accepted.'

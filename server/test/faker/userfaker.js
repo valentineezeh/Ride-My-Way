@@ -5,7 +5,7 @@ const userfake = {
     signupUser: {
         firstname: 'ajayi',
         lastname: 'samuel',
-        email: 'samuel14@example.com',
+        email: 'samuel@example.com',
         about: 'Ride with me now',
         password: '1234567',
         confirmPassword: '1234567'
@@ -15,13 +15,21 @@ const userfake = {
         lastname: 'ezeh',
         email: 'chika9@example.com',
         about: 'Ride with me',
-        password: '$2b$10$XbXqsOMvxNDgy6nXHNITmOGVplfoxDhvGW.FW6iuVj89B4m/Q/F0u',
+        password: '1234567',
+        confirmPassword: '1234567'
+    },
+    signupUser2: {
+        firstname: 'test',
+        lastname: 'user',
+        email: 'testuser@example.com',
+        about: 'Ride with me now',
+        password: '1234567',
         confirmPassword: '1234567'
     },
     signupUser3: {
-        firstname: 'val',
-        lastname: 'ezeh',
-        email: 'val0@example.com',
+        firstname: 'test',
+        lastname: 'user',
+        email: 'baba@example.com',
         about: 'Ride with me now',
         password: '1234567',
         confirmPassword: '1234567'
@@ -46,15 +54,15 @@ const userfake = {
         firstname: 'ajayi',
         lastname: 'samuel',
         email: 'samuel1@example.com',
-        password: '1234567'
+        password: '12345'
     },
     loginUser1: {
-        email: 'val0@example.com',
-        password: '$2b$10$GCM.k4hvdcGirdOxS5b2DeMMg524R0HZ1Jg.XRb0sbYv0l00g7zGK'
+        email: 'chika9@example.com',
+        password: '1234567'
     },
     loginUser2: {
         email: 'testuser@example.com',
-        password: '1234567'
+        password: '12345678'
     },
     loginerror1: {
         email: '',

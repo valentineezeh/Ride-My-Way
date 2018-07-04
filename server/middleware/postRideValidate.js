@@ -1,35 +1,46 @@
 class PostValidation {
     static rideValidator(req, res, next) {
-        const error = [];
+        //console.log('START')
         if (req.body.destinationstartpoint === undefined) {
             return res.status(400).send({
-                message: 'destination start point is required'
+                message: 'destination start point is required1'
             });
         }
+        
         if (req.body.destinationstoppoint === undefined) {
             return res.status(400).send({
                 message: 'destination stop point is required'
             });
         }
+        
         if (req.body.departuretime === undefined) {
             return res.status(400).send({
                 message: 'departure time is required'
             });
         }
+        
         if (req.body.destinationstartpoint.toString().trim() === '') {
-            error.push('destination start point is required...');
+            return res.status(400).send({
+                message: 'destination start point is required.'
+            })
         }
+        //console.log('========================================')
+        //console.log('STOP')
         if (req.body.destinationstoppoint.toString().trim() === '') {
-            error.push('destination stop point is required.');
+            return res.status(400).send({
+                message: 'destination stop point is required.'
+            })
         }
         if (req.body.departuretime.toString().trim() === '') {
-            error.push('departure time is required.');
-        }
-        if (error.length > 0) {
             return res.status(400).send({
-                message: error
-            });
+                message: 'destination time point is required.'
+            })
         }
+        // if (error.length > 0) {
+        //     return res.status(400).send({
+        //         message: error
+        //     });
+        // }
         return next();
     }
 }
