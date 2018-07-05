@@ -14,7 +14,7 @@ dotenv.config();
   
   client.connect((err) => {
     if (err) {
-      console.error(err);
+      console.log(err);
     } else {
       console.log('Connected');
     }

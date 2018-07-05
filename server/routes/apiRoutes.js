@@ -25,7 +25,7 @@ router.get('/users/rides/:rideId/requests', Auth.verify, RideRequestController.g
 
 router.post('/rides/:rideId/requests', Auth.verify, RideRequestController.postRideRequest)
 
-router.put('/users/rides/:rideId/requests/:id', Auth.verify, RideRequestValidation.rideRequest, RideRequestController.putRideRequest)
+router.put('/users/rides/:rideId/requests/:requestId', Auth.verify, RideRequestValidation.rideRequest, RideRequestController.putRideRequest)
 
 
 

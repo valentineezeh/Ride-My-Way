@@ -3,6 +3,11 @@ node_js:
   - "10.4.1"
 script:
   - npm run test
+  env:
+  global:
+    - CC_TEST_REPORTER_ID=787a2f89b15c637323c7340d65ec17e898ac44480706b4b4122ea040c2a88f1d
+ - SECRET=thelordismyhelperishallnotwant
+ - DATABASE=ridemyway
 after_success: npm run coverage
 services:
  - postgresql
@@ -11,7 +16,11 @@ before_script:
  - psql -c 'drop database if exists ridemyway;' -U postgres
  - psql -c 'create database ridemyway;' -U postgres
  - npm run createDb
+ - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+ - chmod +x ./cc-test-reporter
+ - ./cc-test-reporter before-build
 
-env:
- - SECRET=thelordismyhelperishallnotwant
- - DATABASE=ridemyway
+ after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+

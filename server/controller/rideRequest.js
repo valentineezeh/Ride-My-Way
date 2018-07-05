@@ -68,7 +68,7 @@ class RideRequestController{
                     const values = [
                         req.body.accept,
                         req.body.reject,
-                        req.params.id
+                        req.params.requestId
                     ]
                     //console.log(req.body.accept, req.body.reject, req.params.id)
                     client.query(text, values, (err, data) => {
