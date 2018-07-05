@@ -18,6 +18,18 @@ describe('Ride-My-Way Ride Request Test', () => {
               done()
           });
     });
+    it('should return error if ride route is incorrect', (done) => {
+        request(app)
+          .get('/api/v1/users/rides/1/request')
+          .set('authorization', validToken.token)
+          .end((error, res) => {
+              expect(404);
+              //console.log(res.body)
+              expect(res.body.message).to.include('Invalid Route')
+              if(error) done(error)
+              done()
+          })
+    }) ;
     it('should return error if token is not present when getting a ride request', (done) => {
         request(app)
           .get('/api/v1/users/rides/1/requests')
@@ -27,6 +39,18 @@ describe('Ride-My-Way Ride Request Test', () => {
               if(error){
                   done(err);
               }
+              done()
+          });
+    });
+    it('should return all ride requests in the application', (done) => {
+        request(app)
+          .get('/api/v1/users/rides/1/requests')
+          .set('authorization', validToken.token)
+          .end((error, res) => {
+              expect(200);
+              //console.log(res.body.data)
+              expect(res.body.message).to.include('All ride request have be fetch.')
+              if(error) done(error)
               done()
           });
     });
@@ -81,5 +105,29 @@ describe('Ride-My-Way Ride Request Test', () => {
               done()
           });
     });
-
+    it('should throw an error if accept is not true or false', (done) => {
+        request(app)
+          .put('/api/v1/users/rides/2/requests/2')
+          .send(testData.rideRequest5)
+          .set('authorization', validToken.token)
+          .end((error, res) => {
+              expect(400);
+              expect(res.body.message).to.include('Accept can either be true or false.')
+              if(error) done(error)
+              done()
+          })
+    })
+    it('should throw an error if accept is not true or false', (done) => {
+        request(app)
+          .put('/api/v1/users/rides/2/requests/2')
+          .send(testData.rideRequest6)
+          .set('authorization', validToken.token)
+          .end((error, res) => {
+              expect(400);
+              expect(res.body.message).to.include('Reject can either be true or false.')
+              if(error) done(error)
+              done()
+          })
+    })
+    
 })

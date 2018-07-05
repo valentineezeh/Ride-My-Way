@@ -19,6 +19,7 @@ class RideRequestController{
                     })
                 }else{
                     return res.status(200).json({
+                        message: 'All ride request have be fetch.',
                         rideRequest
                     })
                 }
@@ -60,7 +61,7 @@ class RideRequestController{
             if(data){
                 if(!data){
                     return res.status(404).json({
-                        error: { form: "Ride does not exist"}
+                        message:  "Ride does not exist"
                     })
                 }else{
                     const text = "UPDATE riderequests SET accept = $1, reject = $2, updated_at = Now() WHERE ID = $3"

@@ -134,7 +134,7 @@ it('should return all rides in the application', (done) => {
       });
 });
 
-it('should return all rides in the application', (done) => {
+it('should return a single rides in the application', (done) => {
     request(app)
       .get('/api/v1/rides/1')
       .set('authorization', validToken.token)
