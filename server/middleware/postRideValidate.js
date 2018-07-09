@@ -1,46 +1,48 @@
 class PostValidation {
     static rideValidator(req, res, next) {
-        //console.log('START')
-        if (req.body.destinationstartpoint === undefined) {
+        if (req.body.startPoint === undefined) {
             return res.status(400).send({
                 message: 'destination start point is required1'
             });
         }
         
-        if (req.body.destinationstoppoint === undefined) {
+        if (req.body.stopPoint === undefined) {
             return res.status(400).send({
                 message: 'destination stop point is required'
             });
         }
         
-        if (req.body.departuretime === undefined) {
+        if (req.body.departureTime === undefined) {
             return res.status(400).send({
                 message: 'departure time is required'
             });
         }
+        if (req.body.departureDate === undefined) {
+            return res.status(400).send({
+                message: 'departure date is required'
+            });
+        }
         
-        if (req.body.destinationstartpoint.toString().trim() === '') {
+        if (req.body.startPoint.toString().trim() === '') {
             return res.status(400).send({
                 message: 'destination start point is required.'
             })
-        }
-        //console.log('========================================')
-        //console.log('STOP')
-        if (req.body.destinationstoppoint.toString().trim() === '') {
+        } 
+        if (req.body.stopPoint.toString().trim() === '') {
             return res.status(400).send({
                 message: 'destination stop point is required.'
             })
         }
-        if (req.body.departuretime.toString().trim() === '') {
+        if (req.body.departureTime.toString().trim() === '') {
             return res.status(400).send({
-                message: 'destination time point is required.'
+                message: 'departure time is required.'
             })
         }
-        // if (error.length > 0) {
-        //     return res.status(400).send({
-        //         message: error
-        //     });
-        // }
+        if (req.body.departureDate.toString().trim() === '') {
+            return res.status(400).send({
+                message: 'departure date is required.'
+            })
+        }
         return next();
     }
 }

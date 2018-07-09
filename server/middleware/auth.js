@@ -11,7 +11,6 @@ const Auth = {
         if(token){
             jwt.verify(token, secret, (err, decoded) =>{
                 if(err){
-                    console.log(err);
                     return res.status(401).send({
                         message: 'You do not have permission to this page.'
                     });
@@ -22,7 +21,7 @@ const Auth = {
                 }
             });
         }else{
-            return res.status(401).send({ message: 'No token provided' })
+            return res.status(401).send({ message: 'You need to signup or login to perform this action' })
         }
     }
 }

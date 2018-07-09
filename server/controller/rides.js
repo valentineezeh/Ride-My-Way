@@ -3,69 +3,61 @@ import client from '../db/index';
 class RidesController{
     static getAllRides(req, res, next){
         client.query("select * from rides", (err, data) => {
-            if (err) return next(err);
+            if (err){
+                res.status(500).json({
+                    success: false,
+                    message: 'could not establish database connection.'
+                })
+            };
             res.status(200).json({
                 success: true,
-                message: 'All Rides has been retrieve.',
-                data: data.rows
+                rides: data.rows
             })
         })  
     }
-    static getARide(req, res, next){
-        client.query('SELECT * FROM rides WHERE id = $1', [req.params.rideId], (err, data)=>{
-            if (data){
-                //console.log(data.rows)
-                let newRide = [];
-                // let newRideNum = parseInt(newRide, 10);
-                // console.log(newRideNum)
-                data.rows.map((ride) => {
-                    //console.log(ride.id)
-                    if(ride.id === parseInt(req.params.rideId, 10)){
-                        newRide.push(ride)
-            }
-            });
-            if (newRide.length == 0){
-                return res.status(404).json({
-                    success: false,
-                    message: "Ride Record does not exist"
-                });
-            }else{
-                return res.status(200).json({
-                    success: true,
-                    message: " Ride has been retrieve",
-                    ride: newRide
+    static getARide(req, res){
+        client.query('SELECT * FROM rides WHERE id = $1', [parseInt(req.params.rideId, 10)], (err, data)=>{
+            if(err){
+                return res.status(500).json({
+                    message: 'could not establish database connection.'
                 })
             }
-    }else{
-                return next(err);
+            if(data.rowCount > 0){
+                return res.status(200).json({
+                    success: true,
+                    ride: data.rows[0]
+                })
+                
+            }else{
+                return res.status(404).json({
+                    message: 'Ride does not exist.'
+                })
             }
         })
     }
 
     static postRide (req, res, next) {
-
-        const text = "INSERT INTO rides(destinationstartpoint, destinationstoppoint, departuretime, userId, created_at) VALUES ($1, $2, $3, $4, Now()) RETURNING *";
+        const text = "INSERT INTO rides(startPoint, stopPoint, departureTime, departureDate, userId, created_at) VALUES ($1, $2, $3, $4, $5, Now()) RETURNING *";
         const values = [
-            req.body.destinationstartpoint,
-            req.body.destinationstoppoint,
-            req.body.departuretime,
+            req.body.startPoint,
+            req.body.stopPoint,
+            req.body.departureTime,
+            new Date(req.body.departureDate).toISOString(),
             req.decoded.userId
         ]
-        //console.log(req)
         client.query(text, values, (err, data) => {
            if(err) return res.status(500).json({
                success: false,
                message: 'Internal Server error',
-               error: next(err)
+               error: next(err.message)
            })
-           //console.log(data)
             res.status(201).json({
                         success: true,
                         message: 'Ride have been Created',
-                       data: data.rows
+                       data: data.rows[0]
                    })
            })
     }
-    
+
 }
 export default RidesController;

@@ -58,11 +58,11 @@ const userfake = {
     },
     loginUser1: {
         email: 'chika9@example.com',
-        password: '1234567'
+        password: 'password'
     },
     loginUser2: {
         email: 'testuser@example.com',
-        password: '12345678'
+        password: 'password'
     },
     loginerror1: {
         email: '',
@@ -73,7 +73,7 @@ const userfake = {
         password: ''
     },
     loginUser3: {
-        email: 'baba@example.com',
+        email: 'samuel15@example.com',
         password: '1234567'
     },
     missingPass: {

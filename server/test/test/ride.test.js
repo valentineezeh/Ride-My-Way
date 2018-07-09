@@ -26,7 +26,7 @@ describe('Ride-My-Way Rides Test', () => {
           .send(testData.ride)
           .end((error, res) => {
             expect(401);
-            expect(res.body.message).to.include('No token provided');
+            expect(res.body.message).to.include('You need to signup or login to perform this action');
             if(error) done(error);
             done();
           })    
@@ -86,14 +86,26 @@ describe('Ride-My-Way Rides Test', () => {
               done();
           })
     })
-    it('should return error if destination time is empty', (done) => {
+    it('should return error if departure time is empty', (done) => {
         request(app)
           .post('/api/v1/users/rides')
           .send(testData.ride6)
           .set('authorization', validToken.token)
           .end((error, res) => {
               expect(400);
-              expect(res.body.message).to.include('destination time point is required.');
+              expect(res.body.message).to.include('departure time is required.');
+              if(error) done(error)
+              done();
+          })
+    })
+    it('should return error if departure Date is empty', (done) => {
+        request(app)
+          .post('/api/v1/users/rides')
+          .send(testData.ride7)
+          .set('authorization', validToken.token)
+          .end((error, res) => {
+              expect(400);
+              expect(res.body.message).to.include('departure date is required.');
               if(error) done(error)
               done();
           })
@@ -104,7 +116,7 @@ describe('Ride-My-Way Rides Test', () => {
          .end((error, res) => {
              expect(401);
              //console.log(res.body)
-             expect(res.body.message).to.include('No token provided');
+             expect(res.body.message).to.include('You need to signup or login to perform this action');
              if(error) done(error)
              done()
          });
@@ -127,8 +139,8 @@ it('should return all rides in the application', (done) => {
       .set('authorization', validToken.token)
       .end((error, res) => {
           expect(200);
-          //console.log(res.body.data)
-          expect(res.body.message).to.include('All Rides has been retrieve')
+          //console.log(res.body.rides)
+          expect(res.body.rides)
           if(error) done(error)
           done()
       });
@@ -141,7 +153,7 @@ it('should return a single rides in the application', (done) => {
       .end((error, res) => {
           expect(200);
           //console.log(res.body.data)
-          expect(res.body.message).to.include('Ride has been retrieve')
+          expect(res.body.ride)
           if(error) done(error)
           done()
       });
