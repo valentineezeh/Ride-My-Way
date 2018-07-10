@@ -2,99 +2,104 @@ import client from '../db/index';
 
 class RideRequestController{
     static getAllRideRequest(req, res, next){
-        client.query("SELECT * FROM riderequests WHERE  rideId =$1", [ req.params.rideId ], (err, data) => {
-            if (data){
-                let rideRequest = [];
-                //console.log(data.rows)
-                data.rows.map((request) => {
-                    //console.log(request);
-                    if(request.id == parseInt(req.params.rideId, 10)){
-                        //console.log(request.rideId);
-                        rideRequest.push(request)
-                    }
-                });
-                if (rideRequest.length == 0){
-                    return res.status(404).json({
-                        message: "Ride Request not found"
-                    })
-                }else{
-                    return res.status(200).json({
-                        message: 'All ride request have be fetch.',
-                        rideRequest
-                    })
-                }
-            }else{
-                return next(err)
-            }
-        })
-    }
-    static postRideRequest (req, res, next) {
-        const text = "INSERT INTO rideRequests (accept, reject, userId, rideId, created_at) VALUES ($1, $2, $3, $4, Now()) RETURNING *";
-        const values = [
-            req.body.accept,
-            req.body.reject,
-            req.decoded.userId,
-            req.params.rideId
-        ]
-        client.query(text, values, (err, data) =>{
+        client.query('SELECT * FROM riderequests WHERE  rideId =$1', [ parseInt(req.params.rideId, 10) ], (err, data) => {
             if(err){
+                return res.status(500).json({
+                    success: false,
+                    message: 'Could not establish database connection.'
+                });
+            }
+            if(data.rowCount > 0){
+                return res.status(200).json({
+                    success: true,
+                    requests: data.rows
+                });
+            }else{
+                return res.status(404).json({
+                    success: false,
+                    message: 'No ride request found.'
+                });
+            }
+        });
+    }
+    static postRideRequest (req, res) {
+        const text = 'SELECT * FROM rides WHERE id = $1';
+        const values = [
+            parseInt(req.params.rideId, 10),
+        ];
+        client.query(text, values, (err, data) => {
+            if (data.rowCount < 1){
+                return res.status(404).json({
+                    success: false,
+                    message: 'The requested ride offer does not exist'
+                });
+            }
+            if (data.rows[0].userid === req.decoded.userId){
                 return res.status(400).json({
                     success: false,
-                    message: 'Bad request! Ride does not exist.'
-                })
-            };
-            res.status(201).json({
-                success: 'true',
-                message: "Ride Request has been posted.",
-                data: data.rows[0]
-            })
-        })
-    }
-    // UPDATE rideRequests SET RIDEREQUEST = $1, UPDATED_AT = $2 VALUES ($1, Now()) WHERE ID= $3 AND ID= $4"
-    static putRideRequest (req, res, next){
-        const text = "SELECT * FROM rideRequests WHERE userId = $1 AND rideId = $2";
-        const values = [
-            req.decoded.userId,
-            req.params.rideId
-        ]
-        client.query(text, values, (err, data)=>{
-            if(data){
-                if(!data){
-                    return res.status(404).json({
-                        message:  "Ride does not exist"
-                    })
-                }else{
-                    const text = "UPDATE riderequests SET accept = $1, reject = $2, updated_at = Now() WHERE ID = $3"
-                    const values = [
-                        req.body.accept,
-                        req.body.reject,
-                        req.params.requestId
-                    ]
-                    //console.log(req.body.accept, req.body.reject, req.params.id)
-                    client.query(text, values, (err, data) => {
-                        //console.log(data.rows)
-                        if(data){
-                            //console.log(req.body.accept)
-                            if(req.body.accept === 'true'){
-                            //console.log('================================')
-                            return res.status(200).json({
-                                    success: true,
-                                    message: 'rides has been accepted.'
-                                })
-                            }else{
-                                return res.status(200).json({
-                                    success: true,
-                                    message: 'rides have be rejected'
-                                })
-                            }
-                        }else{
-                            //console.log(data)
-                            return res.status(500).json(err.message)
-                        }
-                    })
-                }
+                    message: 'You can not request for a ride you offered'
+                });
+            }else{
+                const text = 'INSERT INTO rideRequests (userId, rideId, created_at) VALUES ($1, $2, Now()) RETURNING *';
+                const values = [
+                    req.decoded.userId,
+                    parseInt(req.params.rideId, 10)
+                ];
+                client.query(text, values, (err, data) => {
+                    if(err){
+                        res.status(500).json({
+                            success: false,
+                            message: 'could not establish database connection.'
+                        });
+                    }else{
+                        res.status(201).json({
+                            success: true,
+                            message: 'Ride Request has been posted.',
+                            request: data.rows[0]
+                        });
+                    }
+                });
             }
-        })
+        });
+
+    }
+    static putRideRequest (req, res){
+        const text = 'SELECT * FROM rideRequests WHERE id = $1 and created_at = updated_at';
+        const values = [
+            parseInt(req.params.requestId, 10),
+        ];
+        client.query(text, values, (err, data)=>{
+            if(data.rowCount === 0){
+                return res.status(403).json({
+                    success: false,
+                    message:  'Ride does not exist or has already been responded to.'
+                });
+            }else{
+                const text = 'UPDATE riderequests SET status = $1 , updated_at = Now() WHERE ID = $2';
+                const values = [
+                    req.body.status, 
+                    req.params.requestId
+                ];
+                client.query(text, values, (err, data) => {
+                    if(data){
+                        if(req.body.status === 'accept'){
+                            return res.status(200).json({
+                                success: true,
+                                message: 'rides has been accepted.'
+                            });
+                        }else{
+                            return res.status(200).json({
+                                success: true,
+                                message: 'rides have be rejected'
+                            });
+                        }
+                    }else{
+                        return res.status(500).json(err.message);
+                    }
+                });
+            }
+            
+        });
     }
 }
 

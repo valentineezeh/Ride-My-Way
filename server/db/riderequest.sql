@@ -1,7 +1,6 @@
 CREATE TABLE rideRequests (
     id SERIAL PRIMARY KEY,
-    accept BOOLEAN NOT NULL,
-    reject BOOLEAN NOT NULL,
+    status VARCHAR DEFAULT 'pending',
     userId INTEGER REFERENCES users(id),
     rideId INTEGER REFERENCES rides(id),
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(), 
@@ -9,7 +8,7 @@ CREATE TABLE rideRequests (
 );
 
 
-INSERT INTO rideRequests (accept, reject, userId, rideId) VALUES
-    (TRUE, FALSE, 1, 1),
-    (TRUE, FALSE, 2, 2),
-    (TRUE, FALSE, 3, 3);
+INSERT INTO rideRequests (userId, rideId) VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3);

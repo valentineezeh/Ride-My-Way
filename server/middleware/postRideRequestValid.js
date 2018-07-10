@@ -1,24 +1,13 @@
 class RideRequestValidation{
     static rideRequest(req, res, next){
-        if (req.body.accept === undefined || req.body.accept.toString().trim() === '') {
+        if (req.body.status === undefined || req.body.status.toString().trim() === '') {
             return res.status(400).send({
-                message: 'Accept should not be empty.'
+                message: 'status should not be empty.'
               });
         }
-        if (req.body.accept !== "true" && req.body.accept !== "false") {
-            console.log(req.body.accept)
+        if (req.body.status !== "accept" && req.body.status !== 'reject') {
             return res.status(400).send({
-                message: 'Accept can either be true or false.'
-              });
-        }
-        if (req.body.reject === undefined || req.body.reject.toString().trim() === '') {
-            return res.status(400).send({
-                message: 'Reject should not be empty.'
-              });
-        }
-        if (req.body.reject !== 'true' && req.body.reject !== 'false') {
-            return res.status(400).send({
-                message: 'Reject can either be true or false.'
+                message: 'status can either be accept or reject.'
               });
         }
         next()
