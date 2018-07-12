@@ -1,5 +1,6 @@
 import express from 'express';
 import logger from 'morgan';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import router from './routes/apiRoutes';
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect all routes to application
+app.use(cors())
 app.use('/api/v1', router);
 //app.use('/api/v1', dummy_router);
 
