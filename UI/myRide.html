@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Rides</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/nav.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/myRide.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/detail2.css" />
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/detail1.js"></script>
+</head>
+<body>
+<!-- Navigation Bar -->
+<div class="topnav" id="myTopnav" style=" padding-left: 4vw; padding-top: 2vh; ">
+        <a href="index.html">Home</a>
+        <a href="myRide.html" class="active">My Ride</a>
+        <a href="allRides.html">All Rides</a>
+        <a href="offerRide.html">Offer a Ride</a>
+        <a href="profile.html">Profile</a>
+        <a href="contactUs.html">Contact Us</a>
+        <a href="index.html">Log Out</a>
+        <a style="padding-left: 35vw; padding-right: 4vw; padding-top: 1vh; padding-bottom: 2vh;  "><form class="search-form">
+          <input type="search" placeholder="Search">
+        <button style = "background-color: #4CAF50; color: white">search</button>
+        </form></a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    
+      <! Group of Cards>
+      <div class="row" style="margin-top: 2rem; padding: 5vh;">
+      
+<div class="column">
+        <div class="card" style="margin-right: 10%;">
+            <div class="container">
+                <h2>My Ride Detail</h2>
+                <p class="title">From: Destination Start Point.</p>
+                <p>Herbert Macaulay Road, Lagos Mainland</p>
+                <p class="title">To: Destination Stop Point</p>
+                <p>Amuwo Odofin</p>
+                <p>Departure Time: 07:00 PM</p>  
+                <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Request</button>
+            </div>
+        </div>
+        </div>
+      
+        <div class="column">
+          <div class="card" style="margin-right: 10%;">
+            <div class="container">
+                <h2>My Ride Detail</h2>
+                <p class="title">From: Destination Start Point.</p>
+                <p>Gwarinpa Estate, Abuja, Federal </p>
+                <p class="title">To: Destination Stop Point</p>
+                <p>Danube Street, Abuja</p>
+                <p>Departure Time: 05:00 PM</p>  
+                <button class="button" style="border: none; display: inline-block; padding: '8px'; background-color: #000; text-align: center; cusor: pointer; width: 100%; margin-bottom: 20%"  onclick="document.getElementById('id02').style.display='block'"> View Request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal S-->
+  <div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div style="overflow-x:auto; background-color: white; padding: 20px; width: 60%; margin: 0 auto;">
+      <table style="width: 100%;">
+        <h1>Request</h1>
+        <thead>
+            <tr>
+                <th> Rides Request </th>
+                <th> Actions</th>
+              </tr>
+        </thead>
+       
+        <tr>
+          <td> Tope Ajayi </td>
+          <td style="padding-left: 20px; "><div style="text-align: center; content: '' ; clear: both; display: flex; justify-content: center; ">
+            <button style="background-color: green; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto">Accept</button>
+            &nbsp;
+            <button style="background-color: #f44336; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto;">Reject</button>
+          </div>
+        </div></td>
+        </tr>
+        <tr>
+          <td> Tolu Ope </td>
+          <td style="padding-left: 20px; "><div style="text-align: center; content: '' ; clear: both; display: flex; justify-content: center; ">
+            <button style="background-color: green; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto">Accept</button>
+            &nbsp;
+            <button style="background-color: #f44336; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto;">Reject</button>
+          </div>
+        </div></td>
+        </tr>
+        <tr>
+          <td>Joy Ibekwe</td>
+          <td style="padding-left: 20px; "><div style="text-align: center; content: '' ; clear: both; display: flex; justify-content: center; ">
+            <button style="background-color: green; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto">Accept</button>
+            &nbsp;
+            <button style="background-color: #f44336; color: white; padding: 10px 22px; margin: 9px 0; border: none; cursor: pointer; width: auto;">Reject</button>
+          </div>
+        </div></td>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+    </div>
+</div>
+</body>
+<div class="footer">
+  <footer>
+    <p>&copy; Copyright 2018 Ride-My-Way</p>
+  </footer>
+</div>
+</html>

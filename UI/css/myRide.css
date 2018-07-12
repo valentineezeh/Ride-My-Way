@@ -1,8 +1,8 @@
 /* Three columns side by side */
 .column {
     float: left;
-    width: 20.0%;
-    height: 8.0%;
+    width: 25.0%;
+    height: 10.0%;
     margin-bottom: 16px;
     padding-right: 3vw;
     padding-left: 5vw;
@@ -54,12 +54,4 @@
 
 .button:hover {
     background-color: #555;
-}
-
-.row{
-    margin-left: 10%;
-    
-}
-.footer{
-    margin-top: 10px
 }
