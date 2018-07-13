@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/v1/auth/signup';
+var signUpurl = 'http://localhost:3000/api/v1/auth/signup';
 
 // Get the modal
 var modal = document.getElementById('id02');
@@ -10,53 +10,58 @@ window.onclick = function(event) {
     }
 };
 
-const btn = document.querySelector('#signUpBtn');
+var btn = document.querySelector('#signUpBtn');
 btn.addEventListener('click', saveUser);
 
-const saveUser = (e) => {
+function saveUser (e) {
     e.preventDefault();
 
-    let firstname = document.getElementById('firstname').value;
-    console.log(firstname);
-    let lastname = document.getElementById('lastname').value;
-    console.log(lastname);
-    let bio = document.getElementById('about').value;
-    console.log(bio);
-    let email = document.getElementById('userEmail').value;
-    console.log(email);
-    let password = document.getElementById('userPassword').value;
-    let confirmPassword = document.getElementById('confirmPassword').value;
+    var firstname = document.getElementById('firstname').value;
+    var lastname = document.getElementById('lastname').value;
+    var about = document.getElementById('about').value;
+    var email = document.getElementById('userEmail').value;
+    var password = document.getElementById('userPassword').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
 
-    let userDetail = {
+    console.log(firstname, lastname, about, email, password, confirmPassword);
+
+    var userDetail = {
         firstname: firstname,
         lastname: lastname,
-        bio: bio,
+        about: about,
         email: email,
         password: password,
         confirmPassword: confirmPassword
     };
 
-    let fetchData = {
+    var fetchData = {
         method: 'POST',
-        body: JSON.stringify({
-            user: { userDetail }
-        }),
+        mode: 'cors',
+        body: JSON.stringify(userDetail),
         headers: {
+            'Access-Control-Allow-Origin': '*',
             Accept: 'application/json, text/plain, */*',
-            'Content-type': 'application/json',
-            'Authorization': token
+            'Content-type': 'application/json',   
         }
     };
 
-    fetch(url, fetchData)
+    fetch(signUpurl, fetchData)
         .then((res) => {
+            console.log(res);
             return res.json();
         })
         .then((data) => {
+            var token = data.token;
+            console.log('token for user ' + token)
             console.log(data);
+            if(data.data && data.message == 'User registration successful' && data.token){
+                window.sessionStorage.setItem('token', data.token);
+                window.location = 'myRide.html';
+            }
+            return data;
         }).catch((err) => {
-            console.log.err;
+            return err;
         });
 
     document.getElementById('signUpForm').reset();
-};
+}
