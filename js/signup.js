@@ -1,17 +1,17 @@
-const signUpurl = 'https://frozen-mesa-95948.herokuapp.com/api/v1/auth/signup';
+var signUpurl = 'https://frozen-mesa-95948.herokuapp.com/api/v1/auth/signup';
 
-const firstname = document.getElementById('firstname');
-const eFirstName = document.getElementById('eFirstName');
-const lastname = document.getElementById('lastname');
-const eLastName = document.getElementById('eLastName');
-const about = document.getElementById('about');
-const eAbout = document.getElementById('eAbout');
-const email = document.getElementById('userEmail');
-const eEmail = document.getElementById('eEmail');
-const password = document.getElementById('userPassword');
-const ePassword = document.getElementById('ePassword');
-const confirmPassword = document.getElementById('confirmPassword');
-const eConfirmPassword = document.getElementById('eConfirmPassword');
+var firstname = document.getElementById('firstname');
+var eFirstName = document.getElementById('eFirstName');
+var lastname = document.getElementById('lastname');
+var eLastName = document.getElementById('eLastName');
+var about = document.getElementById('about');
+var eAbout = document.getElementById('eAbout');
+var email = document.getElementById('userEmail');
+var eEmail = document.getElementById('eEmail');
+var password = document.getElementById('userPassword');
+var ePassword = document.getElementById('ePassword');
+var confirmPassword = document.getElementById('confirmPassword');
+var eConfirmPassword = document.getElementById('eConfirmPassword');
 
 // Get the modal
 var modal = document.getElementById('id02');
@@ -91,6 +91,9 @@ onload = function(event){
         if(confirmPassword.value && confirmPassword.value.length <= 6){
             eConfirmPassword.innerHTML = 'Confirm Password must be 6 or more characters.';
         }
+        if(confirmPassword.value !== password.value){
+            eConfirmPassword.innerHTML = 'Mismatch Password';
+        }
     });
     confirmPassword.addEventListener('keyup', function () {
         eConfirmPassword.innerHTML = '';
@@ -98,16 +101,16 @@ onload = function(event){
 };
 
 
-const btn = document.querySelector('#signUpBtn');
+var btn = document.querySelector('#signUpBtn');
 btn.addEventListener('click', saveUser);
 
 function saveUser (e) {
     e.preventDefault();
     // console.log(firstname.value, lastname.value, about.value, email.value, password.value, confirmPassword.value);
-    let error = document.getElementById('error');
+    var error = document.getElementById('error')
     error.innerHTML = '';
 
-    const userDetail = {
+    var userDetail = {
         firstname: firstname.value,
         lastname: lastname.value,
         about: about.value,
@@ -116,7 +119,7 @@ function saveUser (e) {
         confirmPassword: confirmPassword.value
     };
 
-    const fetchData = {
+    var fetchData = {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(userDetail),
@@ -155,11 +158,14 @@ function saveUser (e) {
                     eEmail.innerHTML += errors.email[0];
                 }
                 if(errors.password.length > 0){
-                    ePassword.innerHTML += errors.password[0];
+                    for (var i in errors.password){
+                        ePassword.innerHTML += errors.password[i];
+                    }
+                   
                 }
             }
 
-            let token = user.token;
+            var token = user.token;
             // console.log('token for user: ' + token);
             // console.log(user);
             if(user.data && user.message == 'User registration successful' && token){
