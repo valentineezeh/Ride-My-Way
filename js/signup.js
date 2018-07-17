@@ -1,17 +1,17 @@
-var signUpurl = 'https://frozen-mesa-95948.herokuapp.com/api/v1/auth/signup';
+const signUpurl = 'https://frozen-mesa-95948.herokuapp.com/api/v1/auth/signup';
 
-var firstname = document.getElementById('firstname');
-var eFirstName = document.getElementById('eFirstName');
-var lastname = document.getElementById('lastname');
-var eLastName = document.getElementById('eLastName');
-var about = document.getElementById('about');
-var eAbout = document.getElementById('eAbout');
-var email = document.getElementById('userEmail');
-var eEmail = document.getElementById('eEmail');
-var password = document.getElementById('userPassword');
-var ePassword = document.getElementById('ePassword');
-var confirmPassword = document.getElementById('confirmPassword');
-var eConfirmPassword = document.getElementById('eConfirmPassword');
+const firstname = document.getElementById('firstname');
+const eFirstName = document.getElementById('eFirstName');
+const lastname = document.getElementById('lastname');
+const eLastName = document.getElementById('eLastName');
+const about = document.getElementById('about');
+const eAbout = document.getElementById('eAbout');
+const email = document.getElementById('userEmail');
+const eEmail = document.getElementById('eEmail');
+const password = document.getElementById('userPassword');
+const ePassword = document.getElementById('ePassword');
+const confirmPassword = document.getElementById('confirmPassword');
+const eConfirmPassword = document.getElementById('eConfirmPassword');
 
 // Get the modal
 var modal = document.getElementById('id02');
@@ -101,16 +101,15 @@ onload = function(event){
 };
 
 
-var btn = document.querySelector('#signUpBtn');
+let btn = document.querySelector('#signUpBtn');
 btn.addEventListener('click', saveUser);
 
 function saveUser (e) {
     e.preventDefault();
-    // console.log(firstname.value, lastname.value, about.value, email.value, password.value, confirmPassword.value);
-    var error = document.getElementById('error')
+    let error = document.getElementById('error')
     error.innerHTML = '';
 
-    var userDetail = {
+    const userDetail = {
         firstname: firstname.value,
         lastname: lastname.value,
         about: about.value,
@@ -119,7 +118,7 @@ function saveUser (e) {
         confirmPassword: confirmPassword.value
     };
 
-    var fetchData = {
+    const fetchData = {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(userDetail),
@@ -132,11 +131,9 @@ function saveUser (e) {
 
     fetch(signUpurl, fetchData)
         .then((res) => {
-            // console.log(res);
             return res.json();
         })
         .then((user) => {
-            // console.log(user);
             const { errors, success } = user;
 
             if(success === false){
@@ -165,9 +162,7 @@ function saveUser (e) {
                 }
             }
 
-            var token = user.token;
-            // console.log('token for user: ' + token);
-            // console.log(user);
+            let token = user.token;
             if(user.data && user.message == 'User registration successful' && token){
                 window.sessionStorage.setItem('token', token);
                 window.location = 'myRide.html';
