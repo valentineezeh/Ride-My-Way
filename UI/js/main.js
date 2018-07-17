@@ -7,3 +7,8 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+
+function logout () {
+    window.sessionStorage.removeItem('token');
+    window.location = 'index.html';
+}

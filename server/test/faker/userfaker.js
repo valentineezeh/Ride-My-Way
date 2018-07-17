@@ -76,6 +76,10 @@ const userfake = {
         email: 'samuel15@example.com',
         password: '1234567'
     },
+    loginUser4: {
+        email: 'samuel@example.com',
+        password: '12345678'
+    },
     missingPass: {
         email: faker.internet.email(),
     },
