@@ -2,3 +2,5 @@
 /coverage/
 /nyc/
 .env
+.eslintrc
+.eslintrc.yml
