@@ -1,5 +1,11 @@
 var url = 'http://localhost:3000/api/v1/auth/login';
 
+var email = document.getElementById('userLoginEmail');
+var eEmail = document.getElementById('eEmail');
+var password = document.getElementById('userLoginPassword');
+var ePassword = document.getElementById('ePassword');
+
+
 // Get the modal
 var modal = document.getElementById('id01');
 
@@ -10,19 +16,38 @@ window.onclick = function(event) {
     }
 };
 
+onload = function(event){
+    event.preventDefault();
+    email.addEventListener('blur', function(){
+        if(!email.value){
+            eEmail.innerHTML = 'Email Field should not be empty'
+        }
+    });
+    email.addEventListener('keyup', function () {
+        eEmail.innerHTML = '';
+    });
+
+    password.addEventListener('blur', function(){
+        if(!password.value){
+            ePassword.innerHTML = 'Password Field should not be empty'
+        }
+    });
+    password.addEventListener('keyup', function () {
+        ePassword.innerHTML = '';
+    });
+};
+
 var loginBtn = document.getElementById('loginBtn');
 loginBtn.addEventListener('click', loginUser);
 
 function loginUser (e) {
     e.preventDefault();
-    var email = document.getElementById('userLoginEmail').value;
-    console.log(email);
-    var password = document.getElementById('userLoginPassword').value;
-    console.log(password);
+    var error = document.getElementById('error');
+    error.innerHTML = '';
 
     var loginDetail = {
-        email: email,
-        password: password
+        email: email.value,
+        password: password.value
     };
 
     var fetchLoginData = {
@@ -42,8 +67,24 @@ function loginUser (e) {
             return res.json();
         })
         .then((user) => {
+            const { errors, success } = user;
+            if(success === false){
+                error.innerHTML = user.message;
+            }
+            if(errors){
+                if(errors.email.length > 0){
+                    for(var i in errors.email){
+                        eEmail.innerHTML += errors.email[i]; 
+                    }
+                }
+                if(errors.password.length > 0){
+                    for(var n in errors.password){
+                        ePassword.innerHTML += errors.password[n]; 
+                    } 
+                }
+            }
             if(user.success == true && user.data && user.message == 'Welcome User You are now Logged In' && user.data.token){
-                window.sessionStorage.setItem('token', user.data.token);
+                window.localStorage.setItem('token', user.data.token);
                 window.location = 'myRide.html';
             }
             // console.log(user)

@@ -2,41 +2,30 @@ import validator from 'validator';
 
 class SignInValidation{
     static signIn(req, res, next){
-        const errors = [];
-        var email = req.body.email.split(' ').join('');   
+        const email = req.body.email ? req.body.email.split(' ').join('') : '';
+        const errors = {
+            email: [],
+            password: []
+        };
         if (email == ''){
-            errors.push('Email should not be empty');
-            return res.status(400).send({
-                status: 'Error',
-                message: errors
-            });
+            errors.email.push('Email should not be empty');
         }
-        if (!validator.isEmail(email)){
-            errors.push('Email must be valid..');
-            return res.status(400).send({
-                status: 'Error',
-                message: errors
-            });
+        if (email && !validator.isEmail(email)){
+            errors.email.push('Email must be valid..');
         }
-        if (email == undefined){
-            errors.push('Email is required..');
-            return res.status(400).send({
-                status: 'Error',
-                message: errors
-            });
+        if (!email){
+            errors.email.push('Email is required..');
         }
-        if ( req.body.password == undefined){
-            errors.push('Password is required...');
-            return res.status(400).send({
-                status: 'Error',
-                message: errors
-            });
+        if ( !req.body.password ){
+            errors.password.push('Password is required...');
+            
         }
         if ( req.body.password == ''){
-            errors.push('Password should not be empty.');
-            return res.status(400).send({
-                status: 'Error',
-                message: errors
+            errors.password.push('Password should not be empty.');
+        }
+        if(errors.email.length > 0 || errors.password.length > 0){
+            return res.status(400).json({
+                errors
             });
         }
         return next();
