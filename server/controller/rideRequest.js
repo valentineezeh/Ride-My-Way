@@ -14,13 +14,6 @@ class RideRequestController{
                     message: 'could not establish database connection.'
                 });
             }
-            if(req.decoded.userId !== data.rows[0].userid){
-                
-                return res.status(400).json({
-                    success: false,
-                    message: 'You can only get ride request for the rides you created.'
-                });
-            }
             if(data.rowCount > 0){
                 return res.status(200).json({
                     success: true,
