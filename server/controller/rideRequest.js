@@ -1,12 +1,24 @@
 import client from '../db/index';
 
 class RideRequestController{
-    static getAllRideRequest(req, res, next){
-        client.query('SELECT * FROM riderequests WHERE  rideId =$1', [ parseInt(req.params.rideId, 10) ], (err, data) => {
+    static getAllRideRequest(req, res){
+
+        const text = `SELECT rideRequests.id AS requestId, status, rides.userid AS userid, rideRequests.userid AS userid, lastname, firstname, rideid, rideRequests.created_at, rideRequests.updated_at FROM riderequests 
+        INNER JOIN users ON rideRequests.userid = users.id
+        INNER JOIN rides ON rideRequests.rideid = rides.id
+        WHERE  rideId =$1`;
+        
+        client.query(text, [ parseInt(req.params.rideId, 10) ], (err, data) => {
             if(err){
                 return res.status(500).json({
+                    message: 'could not establish database connection.'
+                });
+            }
+            if(req.decoded.userId !== data.rows[0].userid){
+                
+                return res.status(400).json({
                     success: false,
-                    message: 'Could not establish database connection.'
+                    message: 'You can only get ride request for the rides you created.'
                 });
             }
             if(data.rowCount > 0){
