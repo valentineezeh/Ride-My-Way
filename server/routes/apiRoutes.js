@@ -20,6 +20,8 @@ router.get('/rides/:rideId', Auth.verify, RidesController.getARide)
 
 router.post('/users/rides', Auth.verify, PostValidation.rideValidator, RidesController.postRide)
 
+router.get('/user/rides', Auth.verify, RidesController.getUserRide)
+
 //Routes for Ride Request
 router.get('/users/rides/:rideId/requests', Auth.verify, RideRequestController.getAllRideRequest)
 

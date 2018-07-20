@@ -4,7 +4,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e0beaf954e76afd5de40/maintainability)](https://codeclimate.com/github/valentineezeh/Ride-My-Way/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e0beaf954e76afd5de40/test_coverage)](https://codeclimate.com/github/valentineezeh/Ride-My-Way/test_coverage)
 
-This is a Car Pooling Web Application that connects users who are willing to offer a ride to other users who are going to the same destination.
+This is a Car Pooling Web Application that connects users who are willing to offer a ride to other users who are going to the same destination. ##
+API Endpoint: https://frozen-mesa-95948.herokuapp.com/api/v1
 
 # Technologies Used
 - Front-end: Html and css
