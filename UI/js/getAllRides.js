@@ -19,7 +19,7 @@ const fetchAllRides = {
         'Access-Control-Allow-Origin': '*',
         Accept: 'application/json, text/plain, /',
         'Content-type': 'application/json; charset=utf-8',
-        authorization: sessionStorage.token,   
+        authorization: localStorage.token,   
     }
 };
 

@@ -4,7 +4,8 @@ CREATE TABLE rideRequests (
     userId INTEGER REFERENCES users(id),
     rideId INTEGER REFERENCES rides(id),
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(), 
-    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    UNIQUE(userId,rideId)
 );
 
 

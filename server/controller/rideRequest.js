@@ -51,12 +51,23 @@ class RideRequestController{
                     parseInt(req.params.rideId, 10)
                 ];
                 client.query(text, values, (err, data) => {
+                    //console.log(err);
+                    // console.log(data.rows[0].userid);
+                    // console.log(req.decoded.userId);
                     if(err){
+                        const duplicateKeyError = 'riderequests_userid_rideid_key';
+                        if (err.message.search(duplicateKeyError) !== -1) {
+                            return res.status(409).json({
+                                success: false,
+                                message: 'Error: You can only request for a ride once',
+                            });
+                        }
                         res.status(500).json({
                             success: false,
                             message: 'could not establish database connection.'
                         });
-                    }else{
+                    }
+                    else{
                         res.status(201).json({
                             success: true,
                             message: 'Ride Request has been posted.',
