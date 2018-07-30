@@ -83,15 +83,15 @@ function loginUser (e) {
                     } 
                 }
             }
-            if(user.success == true && user.data && user.message == 'Welcome User You are now Logged In' && user.data.token){
-                window.localStorage.setItem('token', user.data.token);
+            if(user.success == true && user.data && user.message == 'Welcome User You are now Logged In' && user.data){
+                window.localStorage.setItem('token', user.data);
                 window.location = 'myRide.html';
             }
-            // console.log(user)
-            // var token = user.data.token;
-            // console.log(token);
+            console.log(user)
+            var token = user.data;
+            console.log(token);
             
-            // return data
+            return data
         }).catch((err) => {
             return err
         })
