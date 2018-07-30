@@ -51,9 +51,6 @@ class RideRequestController{
                     parseInt(req.params.rideId, 10)
                 ];
                 client.query(text, values, (err, data) => {
-                    //console.log(err);
-                    // console.log(data.rows[0].userid);
-                    // console.log(req.decoded.userId);
                     if(err){
                         const duplicateKeyError = 'riderequests_userid_rideid_key';
                         if (err.message.search(duplicateKeyError) !== -1) {
