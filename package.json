@@ -12,7 +12,8 @@
     "test": " nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register server/test/test/index.test.js --timeout 10000ms",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "createDb": "psql -U postgres -f ./server/db/data.sql"
+    "createDb": "psql -U postgres -f ./server/db/data.sql",
+    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js"
   },
   "engines": {
     "node": "10.4.1"
@@ -50,6 +51,9 @@
     "nodemon": "^1.17.5",
     "pg": "^7.4.3",
     "pg-promise": "^5.9.7",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
     "rimraf": "^2.6.2",
     "supertest": "^3.0.0",
     "validator": "^10.4.0"
@@ -67,6 +71,11 @@
     "istanbul": "^0.4.5",
     "mocha-istanbul": "^0.3.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^11.1.0"
+    "nyc": "^11.1.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-middleware": "^3.3.0",
+    "webpack-dev-server": "^3.1.8",
+    "webpack-hot-middleware": "^2.23.1"
   }
 }
