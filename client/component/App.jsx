@@ -1,7 +1,13 @@
 import React from 'react';
+import NavigationBar from './NavigationBar.jsx';
 
-export default () => {
-  return (
-    <h1>Hello from Ride My Way</h1>
-  );
+class App extends React.Component {
+  render(){
+    return (
+      <div className="container">
+        <NavigationBar />
+      </div>
+    );
+  }
 }
+export default App
