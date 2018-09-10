@@ -1,0 +1,45 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.hero-image {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient( rgba(1, 7, 0, 0.75), rgba(219, 197, 191, 0.81)), url("../../UI/image/img9.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.hero-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+}
+
+.hero-text button {
+border: 20px;
+outline: 0;
+display: inline-block;
+padding: 10px 25px;
+color: white;
+background-color: #4CAF50;
+text-align: center;
+cursor: pointer;
+width: 100%;
+margin-left: 10px;
+font-size: 20px;
+font-family: pointer;
+
+} 
+
+.hero-text button:hover {
+background-color: #555;
+color: whitesmoke;
+}
