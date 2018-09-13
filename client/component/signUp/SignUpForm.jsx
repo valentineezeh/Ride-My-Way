@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Redirect } from 'react-router-dom';
 import TextFieldSingle from '../common/TextFieldSingle.jsx';
@@ -39,7 +40,6 @@ class SignUpForm extends React.Component {
     this.props.userSignUpRequest(this.state)
     .then(
       () => {
-        //console.log("=====> see me")
         this.props.addFlashMessage({
           type: 'success',
           text: 'User registration successful.',
@@ -143,6 +143,15 @@ class SignUpForm extends React.Component {
       </div>
           )
   }
+}
+
+SignUpForm.propTypes = {
+  userSignUpRequest: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
+}
+
+SignUpForm.contextTypes = {
+  router: PropTypes.object.isRequired
 }
 
 export default SignUpForm;
