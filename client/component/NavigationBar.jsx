@@ -46,6 +46,7 @@ class NavigationBar extends React.Component {
         <Link to="/user/rides" >My Rides</Link>
         <Link to="/user/ride" >Offer Rides</Link>
         <Link to="/contactus">Contact Us</Link>
+        <Link onClick={this.logout.bind(this)} to="#" >Logout</Link>
         <Link to="" className="icon" onClick={myFunction}>
           <i className="fa fa-bars"></i>
         </Link>
@@ -78,6 +79,7 @@ class NavigationBar extends React.Component {
 
 NavigationBar.propTypes = {
   auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
 }
 
@@ -91,4 +93,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { addFlashMessage })(NavigationBar);
+export default connect(mapStateToProps, { logout, addFlashMessage })(NavigationBar);
