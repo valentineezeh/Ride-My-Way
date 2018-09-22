@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Redirect } from 'react-router-dom';
 import TextFieldSingle from '../common/TextFieldSingle.jsx';
+import AlertNotification from '../common/AlertNotification.jsx';
 import SubmitButton from '../common/SubmitButton.jsx';
 import CancelButton from '../common/CancelButton.jsx';
 import '../../css/SignUpForm.css';
@@ -49,7 +50,6 @@ class SignUpForm extends React.Component {
     ).catch(
       (error) => {
         if( error.response.data.errors ){
-          //console.log(error.response.data.errors)
           this.setState({ errors: error.response.data.errors, 
             isLoading: false })
           }else{

@@ -1,4 +1,4 @@
-import { ADD_FLASH_MESSAGE } from './Types.js';
+import { ADD_FLASH_MESSAGE } from './types.js';
 // Create Action Creator for add flash message
 const addFlashMessage = (message) => {
     return {

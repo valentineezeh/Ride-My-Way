@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
-import { SET_CURRENT_USER } from './Types.js';
+import { SET_CURRENT_USER } from './types.js';
 import setAuthorizationToken from '../utils/setAuthorizationToken.js';
 
 export function setCurrentUser(user){
@@ -17,11 +17,8 @@ export function userSignUpRequest(userData) {
                 const token = res.data.token;
                 localStorage.setItem('jwtToken', token);
                 setAuthorizationToken(token);
-                //console.log(dispatch(setCurrentUser(jwt.decode(token))))
                 dispatch(setCurrentUser(jwt.decode(token)));
             }
         );
     };
 }
-
-//https://frozen-mesa-95948.herokuapp.com/api/v1/auth/signup
