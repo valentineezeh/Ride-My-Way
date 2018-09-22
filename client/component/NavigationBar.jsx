@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import myFunction from '../../UI/js/main.js'
 import  LoginModal  from './modal/LoginModal.jsx';
 import '../css/NavigationBar.css';
-import { addFlashMessage } from '../actions/index.js';
+import { logout, addFlashMessage } from '../actions/index.js';
 
 
 
@@ -21,6 +21,18 @@ class NavigationBar extends React.Component {
 
   modalToggle(){
     this.setState({modalOpen: !this.state.modalOpen});
+  }
+
+  logout(event){
+    event.preventDefault();
+    this.props.logout(this.context.router.history.push('/')).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'You have successfully log out.'
+        })
+      }
+    )
   }
 
   render(){
