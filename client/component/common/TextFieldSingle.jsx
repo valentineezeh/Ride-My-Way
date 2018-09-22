@@ -26,7 +26,7 @@ TextFieldSingle.propTypes = {
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    error: PropTypes.array,
+    error: PropTypes.string,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
 }
