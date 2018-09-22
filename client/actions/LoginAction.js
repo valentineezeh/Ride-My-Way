@@ -10,6 +10,14 @@ export function setCurrentUser(user){
     };
 }
 
+export function logout() {
+    return dispatch => {
+        localStorage.removeItem('jwtToken');
+        setAuthorizationToken(false);
+        dispatch(setCurrentUser({}));
+    };
+}
+
 export function userLoginRequest(userLoginData) {
     return (dispatch) => {
         return axios.post('https://frozen-mesa-95948.herokuapp.com/api/v1/auth/login', userLoginData).then(
