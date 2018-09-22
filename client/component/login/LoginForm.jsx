@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import TextFieldSingle from '../common/TextFieldSingle.jsx';
-import SubmitButton from '../common/SubmitButton.jsx';
+import AlertNotification from '../common/AlertNotification.jsx';
 import CancelButton from '../common/CancelButton.jsx';
+import SubmitButton from '../common/SubmitButton.jsx';
+import TextFieldSingle from '../common/TextFieldSingle.jsx';
+import userLoginRequest from '../../actions/LoginAction.js';
 import validateInput from '../../middleware/LoginValidate.js';
 
 
@@ -44,9 +48,13 @@ class LoginForm extends React.Component {
         event.preventDefault();
         if(this.isValid()){
         this.setState({errors: {}, isLoading: true });
-        //console.log(this.state)
         this.props.userLoginRequest(this.state, this.context.router.history.push('/home')).then(
             () => {
+                this.props.addFlashMessage({
+                    type: 'success',
+                    text: `Welcome ${this.state.email}, You are now Logged In`
+                }),
+                this.setState({ done: true })
             },
         ).catch(
             (error) => {
@@ -61,7 +69,6 @@ class LoginForm extends React.Component {
 
     render () {
         const { errors, email, password, isLoading } = this.state;
-        //console.log(errors.message)
         const form = (
     <form className="login-modal-content animate">
       <div className="container">
@@ -104,4 +111,13 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm;
+LoginForm.propTypes = {
+    userLoginRequest: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired
+}
+
+LoginForm.contextTypes = {
+    router: PropTypes.object.isRequired
+}
+
+export default connect (null, { userLoginRequest })(LoginForm);
