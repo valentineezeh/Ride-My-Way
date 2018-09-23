@@ -58,7 +58,6 @@ class LoginForm extends React.Component {
             },
         ).catch(
             (error) => {
-                console.log(error.response)
                 this.setState({ errors: error.response.data,
                     isLoading: false}, this.context.router.history.push('/'))
             }
@@ -72,6 +71,7 @@ class LoginForm extends React.Component {
         const form = (
     <form className="login-modal-content animate">
       <div className="container">
+      {errors.message && <AlertNotification errors={errors.message}/>}
         <h1>Login</h1>
         <TextFieldSingle
         error={errors.email}
