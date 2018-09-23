@@ -6,6 +6,7 @@ import HomePage from '../component/home/HomePage.jsx';
 import RidesPage from '../component/rides/RidesPage.jsx';
 import UserRidePage from '../component/rides/UserRidePage.jsx'
 import FlashMessagesList from './flashMessages/FlashMessageList.jsx';
+import PostRidePage from '../component/rides/PostRidePage.jsx';
 import FootBar from '../component/footer/FootBar.jsx'
 class App extends React.Component {
   render(){
@@ -17,6 +18,7 @@ class App extends React.Component {
           <Route exact path='/' component={HomePage} />
           <Route exact path="/home" component={AuthHomePage} />
           <Route exact path="/rides" component={RidesPage} />
+          <Route exact path="/user/ride" component={PostRidePage} />
           <Route exact path="/user/rides" component={UserRidePage} />
         </div>
         <FootBar />
