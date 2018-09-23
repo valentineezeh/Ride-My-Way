@@ -28,7 +28,7 @@ const UserRideCard = ( userRide  ) => {
 }
 
 UserRideCard.propTypes = {
-  userRide: PropTypes.array.isRequire,
+  userRide: PropTypes.array.isRequired,
 }
 
 export default UserRideCard;
