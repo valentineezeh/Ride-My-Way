@@ -146,6 +146,19 @@ button:hover {
      /* Could be more or less, depending on screen size */
 }
 
+.ride-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+
 /* Style the horizontal ruler */
 hr {
     border: 1px solid #f1f1f1;
@@ -202,6 +215,31 @@ hr {
 .psw:a {
     color: black
 }
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+table,td,th {
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%
+  }
+  
+  th, td {
+    padding: 15px;
+  }
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 100px) {

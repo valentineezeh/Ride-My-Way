@@ -13,7 +13,7 @@ export class LoginModal extends Component {
             e.preventDefault();
             document.querySelector('.modal').style.display = 'none';
         }}>X</span>
-        <LoginForm userLoginRequest={userLoginRequest} addFlashMessage={ addFlashMessage } />
+        <LoginForm userLoginRequest={ userLoginRequest } addFlashMessage={ addFlashMessage } />
         
       </div>
     )

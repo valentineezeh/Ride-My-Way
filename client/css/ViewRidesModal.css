@@ -1,0 +1,53 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+.viewridestyle {
+  overflow-x:auto; 
+  background-color: white; 
+  padding: 20px; 
+  width: 60%; 
+  margin: 0 auto;
+}
+
+.viewridemodalbutton {
+  text-align: center; 
+  content: '' ; 
+  clear: both; 
+  display: flex; 
+  justify-content: center; 
+}
+
+.joinridebutton {
+  background-color: green; 
+  color: white; 
+  padding: 10px 22px; 
+  margin: 9px 0; 
+  border: none; 
+  cursor: pointer; 
+  width: auto
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+table,td,th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%
+}
+
+th, td {
+  padding: 15px;
+}
