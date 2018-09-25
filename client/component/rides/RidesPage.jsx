@@ -7,7 +7,7 @@ import { fetchRides } from '../../actions/FetchRidesAction.js';
 
 
 class RidesPage extends React.Component {
-
+    
     componentDidMount(){
         this.props.fetchRides();
     }

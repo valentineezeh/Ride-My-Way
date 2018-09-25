@@ -6,7 +6,7 @@ import AlertNotification from '../common/AlertNotification.jsx';
 import CancelButton from '../common/CancelButton.jsx';
 import SubmitButton from '../common/SubmitButton.jsx';
 import TextFieldSingle from '../common/TextFieldSingle.jsx';
-import userLoginRequest from '../../actions/LoginAction.js';
+import userLoginRequest from '../../actions/index.js';
 import validateInput from '../../middleware/LoginValidate.js';
 
 
