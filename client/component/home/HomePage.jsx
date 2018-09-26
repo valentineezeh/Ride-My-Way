@@ -25,7 +25,7 @@ class HomePage extends React.Component {
         <button onClick={this.modalToggle}> Get Started. </button>
       </div>
       <div>
-      {this.state.modalOpen ? <Modal /> : null} 
+      {this.state.modalOpen ? <Modal onClose={() => this.modalToggle} /> : null} 
       </div>
     </div>
           )

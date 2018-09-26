@@ -6,14 +6,15 @@
   "scripts": {
     "postinstall": "npm run build:prod",
     "start:dev": "nodemon ./server/app.js --exec babel-node",
-    "start": "node dist/app.js",
+    "start": "concurrently \"node dist/app.js\" \"npm run dev\"",
     "clean:dist": "rimraf ./dist",
     "build:prod": "npm run clean:dist && babel ./server --out-dir dist",
     "test": " nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register server/test/test/index.test.js --timeout 10000ms",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "createDb": "psql -U postgres -f ./server/db/data.sql",
-    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js"
+    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js",
+    "start:concurrent": "concurrently \"npm run start:dev\" \"npm run dev\""
   },
   "engines": {
     "node": "10.4.1"
@@ -43,6 +44,7 @@
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "classnames": "^2.2.6",
+    "concurrently": "^4.0.1",
     "cors": "^2.8.4",
     "css-loader": "^1.0.0",
     "dotenv": "^4.0.0",
