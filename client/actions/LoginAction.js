@@ -20,7 +20,7 @@ export function logout() {
 
 export function userLoginRequest(userLoginData) {
     return (dispatch) => {
-        return axios.post('https://frozen-mesa-95948.herokuapp.com/api/v1/auth/login', userLoginData).then(
+        return axios.post('http://localhost:3000/api/v1/auth/login', userLoginData).then(
             res => {
                 const token = res.data.data;
                 localStorage.setItem('jwtToken', token);

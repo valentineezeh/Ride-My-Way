@@ -14,7 +14,8 @@
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "createDb": "psql -U postgres -f ./server/db/data.sql",
     "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js",
-    "start:concurrent": "concurrently \"npm run start:dev\" \"npm run dev\""
+    "start:concurrent": "concurrently \"npm run start:dev\" \"npm run dev\"",
+    "heroku-postbuild": "npm run dev"
   },
   "engines": {
     "node": "10.4.1"

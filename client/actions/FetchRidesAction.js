@@ -12,7 +12,7 @@ const allRides = ( rides ) => {
 
 const fetchRides = () => {
     return dispatch => {
-        return axios.get('https://frozen-mesa-95948.herokuapp.com/api/v1/rides').then( response => {
+        return axios.get('http://localhost:3000/api/v1/rides').then( response => {
             dispatch(allRides(response.data.rides));
         }).catch( error => {
             throw(error);

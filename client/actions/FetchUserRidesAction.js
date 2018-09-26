@@ -11,7 +11,7 @@ const userRides = ( userRides ) => {
 
 const fetchUserRides = () => {
     return dispatch => {
-        return axios.get('https://frozen-mesa-95948.herokuapp.com/api/v1/user/rides').then(
+        return axios.get('http://localhost:3000/api/v1/user/rides').then(
             response => {
                 dispatch(userRides(response.data.ride));
             }
