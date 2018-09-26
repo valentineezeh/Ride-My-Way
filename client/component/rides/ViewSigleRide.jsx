@@ -6,7 +6,6 @@ import '../../css/ViewRidesModal.css'
 const ViewSingleRide = ({ride}) => {
   console.log(ride)
   return (
-    <div className="modal">
     <div className="ride-modal-content">
     <div className="viewridestyle">
     <h1>Ride Details</h1>
@@ -38,7 +37,6 @@ const ViewSingleRide = ({ride}) => {
           <button className="joinridebutton">Join</button>
         </div>
       </div>
-    </div>
     </div>
   )
 }
