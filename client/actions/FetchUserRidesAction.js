@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../config';
 
 const USER_RIDES = 'USER_RIDES';
 
@@ -11,7 +12,7 @@ const userRides = ( userRides ) => {
 
 const fetchUserRides = () => {
     return dispatch => {
-        return axios.get('http://localhost:3000/api/v1/user/rides').then(
+        return axios.get(`${config.apiUrl}/api/v1/user/rides`).then(
             response => {
                 dispatch(userRides(response.data.ride));
             }

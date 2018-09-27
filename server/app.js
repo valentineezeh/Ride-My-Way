@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
+import path from 'path';
 import bodyParser from 'body-parser';
 import router from './routes/apiRoutes';
 
@@ -15,10 +16,16 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static(path.join(__dirname, '/client')));
+
 // Connect all routes to application
 app.use(cors())
 app.use('/api/v1', router);
 //app.use('/api/v1', dummy_router);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'index.html'));
+});
 
 const port = +process.env.PORT || 3000;
 app.set('port', port);
