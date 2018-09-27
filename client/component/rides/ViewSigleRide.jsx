@@ -4,7 +4,6 @@ import moment from '../../../UI/js/moment.js';
 import '../../css/ViewRidesModal.css'
 
 const ViewSingleRide = ({ride}) => {
-  console.log(ride)
   return (
     <div className="ride-modal-content">
     <div className="viewridestyle">

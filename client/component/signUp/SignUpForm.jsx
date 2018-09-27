@@ -53,7 +53,6 @@ class SignUpForm extends React.Component {
           this.setState({ errors: error.response.data.errors, 
             isLoading: false })
           }else{
-            console.log(error.response.data)
             this.setState({ errors: error.response.data})
           }
           
