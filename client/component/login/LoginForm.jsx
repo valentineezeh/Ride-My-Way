@@ -60,6 +60,7 @@ class LoginForm extends React.Component {
             (error) => {
                 this.setState({ errors: error.response.data,
                     isLoading: false}, this.context.router.history.push('/'))
+                    console.log('Login form==>', this.state)
             }
         )
         }

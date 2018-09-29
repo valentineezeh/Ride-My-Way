@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, '/client')));
 // Connect all routes to application
 app.use(cors())
 app.use('/api/v1', router);
-//app.use('/api/v1', dummy_router);
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'index.html'));

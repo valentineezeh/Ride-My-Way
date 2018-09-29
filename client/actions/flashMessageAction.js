@@ -1,4 +1,5 @@
-import { ADD_FLASH_MESSAGE } from './types.js';
+import { ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE } from './types.js';
+
 // Create Action Creator for add flash message
 const addFlashMessage = (message) => {
     return {
@@ -7,5 +8,12 @@ const addFlashMessage = (message) => {
     };
 };
 
-export { addFlashMessage };
+const deleteFlashMessage = (id) => {
+    return {
+        type: DELETE_FLASH_MESSAGE,
+        id
+    };
+};
+
+export { addFlashMessage, deleteFlashMessage };
 

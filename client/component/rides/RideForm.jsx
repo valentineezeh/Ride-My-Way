@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import TextFieldSingle from '../common/TextFieldSingle.jsx';
 import '../../css/RideForm.css';
-import { createRide } from '../../actions/CreateRideAction.js';
+import { createRide } from '../../actions/index.js';
 import SubmitButton from '../common/SubmitButton.jsx';
 import AlertNotification from '../common/AlertNotification.jsx';
 import rideValidator from '../../middleware/rideFormValid.js';
