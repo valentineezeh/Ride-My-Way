@@ -77,7 +77,12 @@ class SignUpForm extends React.Component {
              
            <div className={classnames("newform-group", {errors: !!errors.firstname})}>
              <label htmlFor="firstname"><b>First Name</b></label>
-             <input className="form-control"  type="text" placeholder="Enter First Name" name="firstname" value={firstname} 
+             <input 
+             className="form-control"  
+             type="text" 
+             placeholder="Enter First Name" 
+             name="firstname" 
+             value={firstname} 
              onChange={this.onChange.bind(this)}
              required />
              {errors.firstname && <p className="errorPTag">{errors.firstname[0]}</p>}
@@ -130,7 +135,7 @@ class SignUpForm extends React.Component {
          </div>
              <div className="clearfix">
                <CancelButton />
-               <SubmitButton className="signupbtn" onClick={this.onSubmit.bind(this)} type="submit" label='Submit' />
+               <SubmitButton onClick={this.onSubmit.bind(this)} type="submit" label='Submit' />
              </div>
            </div>
          </form>

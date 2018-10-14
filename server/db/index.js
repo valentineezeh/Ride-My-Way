@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 
-const {Pool} = require('pg');
 
 dotenv.config();
+
+const {Pool} = require('pg');
 
   const client = new Pool({
     user: process.env.USER,
@@ -10,6 +11,7 @@ dotenv.config();
     port: process.env.DATABASEPORT,
     database: process.env.DATABASE,
     password: process.env.PASSWORD,
+    dialect: 'postgres'
   })
   
   client.connect((err) => {

@@ -109,7 +109,7 @@ button:hover {
 
 /* Add padding to container elements */
 .Signupcontainer {
-    padding: 30px;
+    padding: 10px;
 }
 
 /* The Modal (background) */
@@ -134,6 +134,8 @@ button:hover {
     background-color: #fefefe;
     margin: 3% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
+    margin-right: 3px;
+    
     
      /* Could be more or less, depending on screen size */
 }
@@ -242,11 +244,19 @@ table,td,th {
   }
 
 /* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 100px) {
-    .cancelbtn, .signupbtn {
+@media screen and (max-width: 300px; max-height: 400px) {
+    .cancelbtn {
        width: 100%;
        margin: 0;
        margin-bottom: 10px;
+    }
+    .signupbtn {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+     }
+    .signUp-modal-content {
+        width: 100%
     }
     .modal-content {
         
